@@ -8,9 +8,11 @@ import { store, persistor } from '@/store/store';
 import { classNames } from '@/shared/classNames/classNames';
 import { ThemeProvider } from '@/shared/ThemeProvider/ThemeProvider';
 
-import cls from './App.module.scss';
 import Header from '../Header/Header';
 import Notify from '../Notify/Notify';
+
+import cls from './App.module.scss';
+import '@/assets/styles.scss';
 
 export const App = () => (
   <Provider store={store}>
