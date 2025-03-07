@@ -3,8 +3,10 @@ import { EQueryTypes } from "../types";
 import { Converter } from "./Converter";
 import { ICreateTaskResponse, IDeleteTaskPayload, IPartialTodoResponseConverted, ITodoResponse, ITodoResponseConverted } from "./types";
 
+const API_URL = __API__ || "http://31.130.150.4:3000/";
+
 const TodoApi = () => {
-  const api = BaseAPI("http://31.130.150.4:3000/");
+  const api = BaseAPI(API_URL);
   const converter = Converter();
 
   const getTodos = (authToken: string) =>

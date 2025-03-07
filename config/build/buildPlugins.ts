@@ -8,7 +8,7 @@ import path from 'path';
 import { BuildOptions } from './types/types';
 
 export function buildPlugins({
-  mode, paths, analyzer, platform,
+  mode, paths, analyzer, platform, api,
 }: BuildOptions): Configuration['plugins'] {
   const isDev = mode === 'development';
   const isProd = mode === 'production';
@@ -18,6 +18,7 @@ export function buildPlugins({
     new DefinePlugin({
       __PLATFORM__: JSON.stringify(platform),
       __ENV__: JSON.stringify(mode),
+      __API__: JSON.stringify(api),
     }),
 
   ];

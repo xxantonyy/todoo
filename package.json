@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "browser:dev": "webpack serve --env mode=development platform=desktop analyzer=true port=3000 analyzer=false",
+    "browser:dev": "webpack serve --env mode=development platform=desktop analyzer=true port=3000 analyzer=false api='http://31.130.150.4:3000/'",
     "build:dev": "webpack --env mode=development",
-    "build:prod": "webpack --env mode=production",
+    "build:prod": "webpack --env mode=production api='/api'",
     "build:mobile": "webpack --env mode=production --env platform=mobile",
     "build:desktop": "webpack --env mode=production --env platform=desktop",
     "deploy": "gh-pages -d build",
