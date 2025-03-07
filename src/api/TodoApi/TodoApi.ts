@@ -32,7 +32,7 @@ const TodoApi = () => {
         category: body.category,
         priority: body.priority,
         completed: body.completed,
-        date: new Date(),
+        date: body?.date || new Date(),
       },
       options: {
         headers: {

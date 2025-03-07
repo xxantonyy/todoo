@@ -7,7 +7,6 @@ const useToDoModel = () => {
   const dispatch = useTypedDispatch();
 
   const handleChangeStatus = (item: ITodoResponseConverted) => {
-    console.log(!item.completed)
     dispatch(todosActions.updateTodo({ item: { ...item, completed: !item.completed } }))
   }
 
