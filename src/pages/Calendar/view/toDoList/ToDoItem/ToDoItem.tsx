@@ -15,27 +15,65 @@ const ToDoItem = ({ item, onClick }: IToDoItem) => {
   const model = useToDoModel();
   const itemPriority = priority[item.priority];
   const itemCategory = category[item.category];
+  const isMobile = window.innerWidth < 820;
 
   return (
-    <div className={b()}>
-      <div className={b('title')} onClick={() => onClick(item)}>{item.title}</div>
-      <div className={b('status')} onClick={() => model.handleChangeStatus(item)}>
-        {item.completed ? 'completed' : 'not completed'}
-      </div>
-      <div className={b('priority')}>
-        <itemPriority.img />
-      </div>
-      <div className={b('label')}>{itemCategory.label}</div>
-      <div className={b('date')}>
-        {new Date(item.date).toLocaleDateString('ru', {
-          year: 'numeric',
-          month: '2-digit',
-          day: '2-digit',
-          hour: '2-digit',
-          minute: '2-digit',
-        })}
-      </div>
-    </div>
+    <>
+      {!isMobile && (
+        <div className={b()}>
+          <div className={b('title')} onClick={() => onClick(item)}>
+            {item.title}
+          </div>
+          <div
+            className={b('status')}
+            onClick={() => model.handleChangeStatus(item)}
+          >
+            {item.completed ? 'completed' : 'not completed'}
+          </div>
+          <div className={b('priority')}>
+            <itemPriority.img />
+          </div>
+          <div className={b('label')}>{itemCategory.label}</div>
+          <div className={b('date')}>
+            {new Date(item.date).toLocaleDateString('ru', {
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit',
+              hour: '2-digit',
+              minute: '2-digit',
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* mobile */}
+      {isMobile && (
+        <div className={b('mobile')}>
+          <div className={b('title')} onClick={() => onClick(item)}>
+            {item.title}
+          </div>
+          <div
+            className={b('status')}
+            onClick={() => model.handleChangeStatus(item)}
+          >
+            {item.completed ? 'completed' : 'not completed'}
+          </div>
+          <div className={b('priority')}>
+            <itemPriority.img />
+          </div>
+          <div className={b('label')}>{itemCategory.label}</div>
+          <div className={b('date')}>
+            {new Date(item.date).toLocaleDateString('ru', {
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit',
+              hour: '2-digit',
+              minute: '2-digit',
+            })}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

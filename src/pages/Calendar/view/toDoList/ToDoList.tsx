@@ -15,27 +15,57 @@ interface IToDoList {
 
 const ToDoList = ({ list }: IToDoList) => {
   const model = useCreateModal();
+  const isMobile = window.innerWidth < 820;
 
   return (
     <>
-      <div className={b()}>
-        <div className={b('header')}>
-          <div className={b('title')}>Tasks</div>
-          <Button type="button" onClick={() => model.handleOpenCreateTask()}>
-            Add new task
-          </Button>
-        </div>
-        <div className={b('content')}>
-          <div className={b('headers')}>
-            <div>Title</div>
-            <div>Status</div>
-            <div>Priority</div>
-            <div>Category</div>
-            <div>Date</div>
+      {!isMobile && (
+        <div className={b()}>
+          <div className={b('header')}>
+            <div className={b('title')}>Tasks</div>
+            <Button type="button" onClick={() => model.handleOpenCreateTask()}>
+              Add new task
+            </Button>
           </div>
-          {list?.map((item) => <ToDoItem key={item.id} item={item} onClick={() => model.handleClickOnTask(item)} />)}
+          <div className={b('content')}>
+            <div className={b('headers')}>
+              <div>Title</div>
+              <div>Status</div>
+              <div>Priority</div>
+              <div>Category</div>
+              <div>Date</div>
+            </div>
+            {list?.map((item) => (
+              <ToDoItem
+                key={item.id}
+                item={item}
+                onClick={() => model.handleClickOnTask(item)}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      )}
+
+      {/* mobile */}
+      {isMobile && (
+        <div className={b()}>
+          <div className={b('header')}>
+            <div className={b('title')}>Tasks</div>
+            <Button type="button" onClick={() => model.handleOpenCreateTask()}>
+              Add new task
+            </Button>
+          </div>
+          <div className={b('content')}>
+            {list?.map((item) => (
+              <ToDoItem
+                key={item.id}
+                item={item}
+                onClick={() => model.handleClickOnTask(item)}
+              />
+            ))}
+          </div>
+        </div>
+      )}
       <ToDoModal model={model} />
     </>
   );

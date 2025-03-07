@@ -1,7 +1,7 @@
 import { useTheme } from '@/shared/ThemeProvider/ThemeProvider';
 import Button from '@/components/Button/Buttons';
 import { useNavigate } from 'react-router-dom';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { getActiveRoutes } from './utils';
 import LoginModal from './modules/loginModal/LoginModal';
 
@@ -18,6 +18,8 @@ const Header = () => {
   const navigate = useNavigate();
   const routes = getActiveRoutes(window.location.pathname);
   const { theme, toggleTheme } = useTheme();
+  const [burgerOpen, setBurgerOpen] = useState(false);
+  const isMobile = window.innerWidth < 820;
 
   const allRoutes = useMemo(
     () =>
@@ -25,7 +27,10 @@ const Header = () => {
         <Button
           className={route.active ? 'active' : ''}
           key={route.path}
-          onClick={() => navigate(route.path)}
+          onClick={() => {
+            navigate(route.path);
+            setBurgerOpen(!burgerOpen);
+          }}
           type="button"
         >
           {route.name}
@@ -36,25 +41,73 @@ const Header = () => {
 
   return (
     <>
-      <div className={b()}>
-        <div className={b('left-block')}>To do app</div>
-        <div className={b('center-block')}></div>
-        <div className={b('right-block')}>
-          <div className={b('theme')} onClick={toggleTheme}>
-            {theme === 'light' ? (
-              <div className={b('theme-icon')}>
-                <img src={NightPNG} alt="night" />
-              </div>
-            ) : (
-              <div className={b('theme-icon')}>
-                <img src={DayPNG} alt="day" />
-              </div>
-            )}
+      {!isMobile && (
+        <div className={b()}>
+          <div className={b('left-block')}>To do app</div>
+          <div className={b('center-block')}></div>
+          <div className={b('right-block')}>
+            <div className={b('theme')} onClick={toggleTheme}>
+              {theme === 'light' ? (
+                <div className={b('theme-icon')}>
+                  <img src={NightPNG} alt="night" />
+                </div>
+              ) : (
+                <div className={b('theme-icon')}>
+                  <img src={DayPNG} alt="day" />
+                </div>
+              )}
+            </div>
+            <div className={b('routes')}>{allRoutes}</div>
+            <LoginModal />
           </div>
-          <div className={b('routes')}>{allRoutes}</div>
-          <LoginModal />
         </div>
-      </div>
+      )}
+
+      {/* mobile */}
+      {isMobile && (
+        <>
+          <div className={b('Header-mobile')}>
+            <div className={b('left-block')}>To do app</div>
+            <LoginModal />
+            <div onClick={() => setBurgerOpen(!burgerOpen)}>
+              <div>Menu</div>
+            </div>
+          </div>
+
+          <div
+            className={b('burger', { open: burgerOpen, close: !burgerOpen })}
+          >
+            <div
+              className={b('container', {
+                open: burgerOpen,
+                close: !burgerOpen,
+              })}
+            >
+              <div className={b('close')} onClick={() => setBurgerOpen(false)}>
+                X
+              </div>
+              <div className={b('top')}>
+                <div>To do app</div>
+                <div className={b('routes')}>{allRoutes}</div>
+              </div>
+              <div className={b('bottom')}>
+                Theme switcher
+                <div className={b('theme')} onClick={toggleTheme}>
+                  {theme === 'light' ? (
+                    <div className={b('theme-icon')}>
+                      <img src={NightPNG} alt="night" />
+                    </div>
+                  ) : (
+                    <div className={b('theme-icon')}>
+                      <img src={DayPNG} alt="day" />
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 };
