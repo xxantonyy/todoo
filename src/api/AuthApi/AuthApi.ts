@@ -6,7 +6,6 @@ const API_URL = __API__ || "http://31.130.150.4:3000/";
 
 const AuthApi = () => {
   const api = BaseAPI(API_URL);
-  console.log(API_URL)
 
   const auth = (username: string, password: string) =>
     api.sendQuery<IAuthApi, IAuthApi>({
