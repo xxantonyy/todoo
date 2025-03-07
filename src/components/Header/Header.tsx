@@ -10,7 +10,6 @@ import block from 'bem-cn';
 
 import DayPNG from './img/day.png';
 import NightPNG from './img/night.png';
-import { useTypedSelector } from '@/hooks/useTypedSelector';
 
 const b = block(cls.Header);
 
@@ -65,12 +64,14 @@ const Header = () => {
 
       {/* mobile */}
       {isMobile && (
-        <>
+        <div>
           <div className={b('Header-mobile')}>
-            <div className={b('left-block')}>To do app</div>
-            <LoginModal />
-            <div onClick={() => setBurgerOpen(!burgerOpen)}>
-              <div>Menu</div>
+            <div className={b('Header-mobile__content')}>
+              <div className={b('left-block')}>To do app</div>
+              <LoginModal />
+              <div onClick={() => setBurgerOpen(!burgerOpen)}>
+                <div>Menu</div>
+              </div>
             </div>
           </div>
 
@@ -106,7 +107,7 @@ const Header = () => {
               </div>
             </div>
           </div>
-        </>
+        </div>
       )}
     </>
   );

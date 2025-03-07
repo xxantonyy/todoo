@@ -50,5 +50,32 @@
 
 @media screen and (max-width: 820px) {
   .ToDoItem {
+    &__mobile {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.2rem;
+      border: 1px solid var(--border-color);
+      border-radius: 0.8rem;
+      padding: 1rem;
+    }
+
+    &__title,
+    &__status,
+    &__priority,
+    &__label,
+    &__date {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+    }
+
+
+    &__left {
+      display: flex;
+      justify-content: start;
+    }
+    &__right {
+      display: flex;
+    }
   }
 }

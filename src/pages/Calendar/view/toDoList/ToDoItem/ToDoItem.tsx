@@ -50,26 +50,39 @@ const ToDoItem = ({ item, onClick }: IToDoItem) => {
       {isMobile && (
         <div className={b('mobile')}>
           <div className={b('title')} onClick={() => onClick(item)}>
-            {item.title}
+            <div className={b('left')}>Title</div>
+            <div className={b('right')}>{item.title}</div>
           </div>
           <div
             className={b('status')}
             onClick={() => model.handleChangeStatus(item)}
           >
-            {item.completed ? 'completed' : 'not completed'}
+            <div className={b('left')}>Status</div>
+            <div className={b('right')}>
+              {item.completed ? 'completed' : 'not completed'}
+            </div>
           </div>
           <div className={b('priority')}>
-            <itemPriority.img />
+            <div className={b('left')}>Priority</div>
+            <div className={b('right')}>
+              <itemPriority.img />
+            </div>
           </div>
-          <div className={b('label')}>{itemCategory.label}</div>
+          <div className={b('label')}>
+            <div className={b('left')}>Category</div>
+            <div className={b('right')}>{itemCategory.label}</div>
+          </div>
           <div className={b('date')}>
-            {new Date(item.date).toLocaleDateString('ru', {
-              year: 'numeric',
-              month: '2-digit',
-              day: '2-digit',
-              hour: '2-digit',
-              minute: '2-digit',
-            })}
+            <div className={b('left')}>Date</div>
+            <div className={b('right')}>
+              {new Date(item.date).toLocaleDateString('ru', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+              })}
+            </div>
           </div>
         </div>
       )}

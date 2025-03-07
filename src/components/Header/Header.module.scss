@@ -52,13 +52,24 @@
     display: none;
 
     &__Header-mobile {
+      position: fixed; // Закрепляет хедер
+      top: 0; // Размещает сверху
+      width: 100dvw; // Растягиваем по ширине экрана
+      z-index: 999; // Выше всех остальных элементов
+      background: var(--background-color); // Фон обязателен, чтобы контент не просвечивал
       display: flex;
-      max-height: 4rem;
-      padding: 1rem 0.2rem 1rem 0.2rem;
-      justify-content: space-between; 
-      align-items: center;
-      margin: 0 1rem 0 1rem;
+      border-bottom: 1px solid var(--border-color);
+
+      &__content {
+        width: 100%;
+        height: 2rem;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        align-items: center;
+      }
     }
+    
 
     &__burger {
       position: fixed;

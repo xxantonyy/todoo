@@ -88,3 +88,9 @@
     }
   }
 }
+
+@media screen and (max-width: 820px) {
+  .LoginModal {
+    min-width: unset;
+  }
+}

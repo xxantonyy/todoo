@@ -48,6 +48,12 @@
 
 @media screen and (max-width: 820px) {
   .ToDoList {
+
+    &__content {
+      display: flex;
+      border: none;
+      gap: 1rem;
+    }
     &__headers{
       display: none;
     }

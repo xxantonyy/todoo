@@ -1,8 +1,10 @@
 import { useTypedDispatch } from "@/hooks/useTypedDispatch";
 import { authActions } from "@/store/reducers/auth/authSlice";
 import { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const useAuth = () => {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [values, setValues] = useState({
     login: '',
@@ -23,7 +25,7 @@ const useAuth = () => {
     dispatch(authActions.getAuth({
       username: values.login,
       password: values.password,
-      callback: () => { setOpen(false); setValues({ login: '', password: '' }) }
+      callback: () => { setOpen(false); setValues({ login: '', password: '' }); navigate('/calendar') }
     }))
   }, [dispatch, values]);
 

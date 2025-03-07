@@ -22,9 +22,11 @@ export const App = () => (
         <div className={classNames(cls.container, {}, [])}>
           <BrowserRouter>
             <Header />
-            <Suspense fallback={<Loading />}>
-              <AppRouter />
-            </Suspense>
+            <div className={classNames(cls.content, {}, [])}>
+              <Suspense fallback={<Loading />}>
+                <AppRouter />
+              </Suspense>
+            </div>
           </BrowserRouter>
         </div>
       </ThemeProvider>
