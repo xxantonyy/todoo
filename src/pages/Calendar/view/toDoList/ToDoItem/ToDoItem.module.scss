@@ -1,0 +1,49 @@
+.ToDoItem {
+  position: relative;
+
+  display: grid;
+  grid-template-columns:  1.5fr repeat(4, 1fr);;
+  gap: 2rem;
+  padding: 1rem 1.8rem;
+
+  &:first-child {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  &:not(:last-child, :first-child) {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  // &:last-child {
+  //   border-top: 1px solid var(--border-color);
+  // }
+
+  &__priority{
+  }
+
+  .stroke-background {
+    stroke: var(--second-background);
+  }
+
+  .stroke-text {
+    stroke: var(--text-color);
+  }
+
+  &__status,
+  &__priority,
+  &__label,
+  &__date {
+    display: flex;
+    justify-content: center;
+  }
+  
+
+  &__status {
+    cursor: pointer;
+  }
+
+
+  &__title {
+    cursor: pointer;
+  }
+}

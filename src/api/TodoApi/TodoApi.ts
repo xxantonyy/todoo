@@ -1,0 +1,84 @@
+import BaseAPI from "../BaseApi"
+import { EQueryTypes } from "../types";
+import { Converter } from "./Converter";
+import { ICreateTaskResponse, IDeleteTaskPayload, IPartialTodoResponseConverted, ITodoResponse, ITodoResponseConverted } from "./types";
+
+const TodoApi = () => {
+  const api = BaseAPI("http://31.130.150.4:3000/");
+  const converter = Converter();
+
+  const getTodos = (authToken: string) =>
+    api.sendQuery<ITodoResponse[], ITodoResponseConverted[]>({
+      type: EQueryTypes.GET,
+      url: '/todos',
+      params: {},
+      options: {
+        headers: {
+          Authorization: `Bearer ${authToken}`
+        }
+      },
+      converterSuccess: data => converter.convertToDos(data),
+    })
+
+  const patchToDo = (body: IPartialTodoResponseConverted, authToken: string) =>
+    api.sendQuery<object, object>({
+      type: EQueryTypes.PUT,
+      url: `/todos/${body.id}`,
+      params: {
+        title: body.title,
+        description: body.description,
+        category: body.category,
+        priority: body.priority,
+        completed: body.completed,
+        date: new Date(),
+      },
+      options: {
+        headers: {
+          Authorization: `Bearer ${authToken}`
+        }
+      },
+    })
+
+  const createTodo = (body: IPartialTodoResponseConverted, authToken: string) =>
+    api.sendQuery<ICreateTaskResponse, ITodoResponseConverted>({
+      type: EQueryTypes.POST,
+      url: '/todos',
+      params: {
+        title: body.title,
+        description: body.description,
+        category: body.category,
+        priority: body.priority,
+        completed: body.completed,
+        date: new Date(),
+      },
+      options: {
+        headers: {
+          Authorization: `Bearer ${authToken}`
+        }
+      },
+      converterSuccess: data => converter.convertToDo(data),
+    })
+
+  const deleteTask = (body: IDeleteTaskPayload, authToken: string) =>
+    api.sendQuery<object, object>({
+      type: EQueryTypes.DELETE,
+      url: `/todos/${body.todoId}`,
+      params: {
+        ...body
+      },
+      options: {
+        headers: {
+          Authorization: `Bearer ${authToken}`
+        }
+      },
+    })
+
+  return {
+    getTodos,
+    patchToDo,
+    createTodo,
+    deleteTask,
+  }
+}
+
+export default TodoApi

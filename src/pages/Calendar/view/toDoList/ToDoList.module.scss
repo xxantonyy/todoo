@@ -1,0 +1,48 @@
+.ToDoList {
+  position: relative;
+  padding: 2rem;
+  overflow-y: auto;
+  height: 90dvh;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 1.2rem;
+    font-family: Istok Web;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 92.13px;
+    letter-spacing: 0%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.8rem;
+  }
+
+  &__headers{
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 1.5fr repeat(4, 1fr);
+    gap: 2rem;
+    padding: 1rem 1.8rem;
+    border-bottom: 1px solid var(--border-color);
+    
+    font-family: Istok Web;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 35.99px;
+
+    :not(:first-child) {
+      text-align: center;
+    }
+  }
+}

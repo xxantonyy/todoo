@@ -1,0 +1,95 @@
+.notify-container {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10000;
+}
+
+.notify {
+  position: relative;
+  background: var(--text-color);
+  color: var(--background-color);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 2px 2px 10px var(--border-color);
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  animation: show 0.5s ease-in-out;
+  z-index: 10;
+  width: fit-content;
+
+  @keyframes show {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    
+  }
+
+  &--show {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  &--hide {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  &--special {
+    color: var(--text-color);
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      z-index: -2;
+      padding: 0.2rem;
+      border-radius: 8px;
+      background-image: conic-gradient(from var(--angle), red, rgb(51, 255, 0), blue,purple,yellow, orange, red);
+      filter: blur(0.2rem);
+      animation: 3s spin linear infinite;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      z-index: -1;
+      border-radius: 8px;
+      background: var(--background-color)
+    }
+  }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 180deg;
+  inherits: false;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  } 
+  to {
+    --angle: 360deg;
+  }
+}
