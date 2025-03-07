@@ -55,23 +55,34 @@ export const Input: React.FC<IInputProps> = ({
 
   switch (type) {
     case 'select':
-      return <div className={b('select')}>
-        {renderInput()}
-      </div>;
+      return <div className={b('select')}>{renderInput()}</div>;
     case 'checkbox':
-      return <div className={b('checkbox')}>
-      {renderInput()}
-    </div>;;
+      return <div className={b('checkbox')}>{renderInput()}</div>;
 
     case 'text':
       return (
-        <div className={b(null, className, {})}>
+        <>
           {title && <span className={b('title')}>{title}</span>}
-          <div className={b('wrapper')}>
-            {icon && <span className={b('icon')}>{icon}</span>}
-            {renderInput()}
+          <div className={b(null, className, {})}>
+            <div className={b('wrapper')}>
+              {icon && <span className={b('icon')}>{icon}</span>}
+              {renderInput()}
+            </div>
           </div>
-        </div>
+        </>
+      );
+
+    case 'password':
+      return (
+        <>
+          {title && <span className={b('title')}>{title}</span>}
+          <div className={b(null, className, {})}>
+            <div className={b('wrapper')}>
+              {icon && <span className={b('icon')}>{icon}</span>}
+              {renderInput()}
+            </div>
+          </div>
+        </>
       );
   }
 };
