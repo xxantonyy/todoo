@@ -17,6 +17,8 @@ const ToDoItem = ({ item, onClick }: IToDoItem) => {
   const itemCategory = category[item.category];
   const isMobile = window.innerWidth < 820;
 
+  console.log(itemPriority)
+
   return (
     <>
       {!isMobile && (
