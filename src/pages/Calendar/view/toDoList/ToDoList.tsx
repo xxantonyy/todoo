@@ -6,6 +6,7 @@ import ToDoItem from './ToDoItem/ToDoItem';
 import Button from '@/components/Button/Buttons';
 import ToDoModal from './ToDoModal/ToDoModal';
 import useCreateModal from './ToDoModal/model';
+import { useMemo } from 'react';
 
 const b = block(cls.ToDoList);
 
@@ -17,6 +18,24 @@ const ToDoList = ({ list }: IToDoList) => {
   const model = useCreateModal();
   const isMobile = window.innerWidth < 820;
 
+  const items = useMemo(() => {
+    if (list.length) {
+      list?.map((item) => (
+        <ToDoItem
+          key={item.id}
+          item={item}
+          onClick={() => model.handleClickOnTask(item)}
+        />
+      ));
+    } else {
+      return (
+        <div>
+          <p>There are no tasks</p>
+        </div>
+      );
+    }
+  }, [list]);
+
   return (
     <>
       {!isMobile && (
@@ -27,22 +46,20 @@ const ToDoList = ({ list }: IToDoList) => {
               Add new task
             </Button>
           </div>
-          <div className={b('content')}>
-            <div className={b('headers')}>
-              <div>Title</div>
-              <div>Status</div>
-              <div>Priority</div>
-              <div>Category</div>
-              <div>Date</div>
+          {list.length > 0 ? (
+            <div className={b('content')}>
+              <div className={b('headers')}>
+                <div>Title</div>
+                <div>Status</div>
+                <div>Priority</div>
+                <div>Category</div>
+                <div>Date</div>
+              </div>
+              {items}
             </div>
-            {list?.map((item) => (
-              <ToDoItem
-                key={item.id}
-                item={item}
-                onClick={() => model.handleClickOnTask(item)}
-              />
-            ))}
-          </div>
+          ) : (
+            <div>{items}</div>
+          )}
         </div>
       )}
 
@@ -55,15 +72,7 @@ const ToDoList = ({ list }: IToDoList) => {
               Add new task
             </Button>
           </div>
-          <div className={b('content')}>
-            {list?.map((item) => (
-              <ToDoItem
-                key={item.id}
-                item={item}
-                onClick={() => model.handleClickOnTask(item)}
-              />
-            ))}
-          </div>
+          <div className={b('content')}>{items}</div>
         </div>
       )}
       <ToDoModal model={model} />
