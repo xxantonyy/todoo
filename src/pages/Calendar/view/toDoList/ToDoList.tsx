@@ -20,7 +20,7 @@ const ToDoList = ({ list }: IToDoList) => {
 
   const items = useMemo(() => {
     if (list.length) {
-      list?.map((item) => (
+      return list?.map((item) => (
         <ToDoItem
           key={item.id}
           item={item}
