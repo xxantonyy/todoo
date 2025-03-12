@@ -60,7 +60,7 @@ const ToDoModal = ({ model }: IToDoModal) => {
             onChange={(e) => model.handleChangeTask(e.target.value, 'priority')}
           />
         </div>
-        <div className={b('input')}>
+        <div className={b('input', 'last')}>
           <Input
             placeholder="category"
             type="select"

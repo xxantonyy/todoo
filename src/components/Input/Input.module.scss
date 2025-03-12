@@ -9,6 +9,15 @@
   transition: border-color 0.3s ease-in-out;
   margin-top: 0.3rem;
   transition: border-bottom 0.6s;
+  width: 100%;
+
+  &__wrapper {
+    width: 98%;
+    overflow: hidden;
+    input {
+      text-overflow: ellipsis;
+    }
+  }
 
   input {
     &::placeholder {

@@ -4,7 +4,17 @@
   &__input {
     height: 2.975rem;
     margin-top: 0.725rem;
+    display: flex;
+    align-items: center;
   }
+  &__input__last {
+    height: 2.975rem;
+    margin-top: 0.725rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.2rem;
+  }
+
 
   &__checkbox {
     display: flex;
