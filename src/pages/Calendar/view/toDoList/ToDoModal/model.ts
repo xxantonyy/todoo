@@ -56,7 +56,6 @@ const useCreateModal = () => {
   const handleCreateTask = (e: any) => {
     e.preventDefault();
     setIsCreateTask(false);
-    setIsOpen(false);
     setIsPatch(false);
     dispatch(todosActions.createTodo({item: taskState, callback: () => setIsOpen(false)}));
   }
