@@ -48,6 +48,7 @@
 
   &--special {
     color: var(--text-color);
+    border-radius: 8px;
 
     &::after {
       content: '';
