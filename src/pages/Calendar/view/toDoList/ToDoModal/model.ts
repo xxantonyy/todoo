@@ -26,8 +26,6 @@ const useCreateModal = () => {
     priority: 0,
   });
 
-  console.log(isOpen, isCreateTask, isPatch)
-
   const handleChangeTask = (value: any, key: keyof ITask) => {
     switch (key) {
       case 'category':
