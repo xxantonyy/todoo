@@ -28,7 +28,7 @@ const ToDoItem = ({ item, onClick }: IToDoItem) => {
             className={b('status')}
             onClick={() => model.handleChangeStatus(item)}
           >
-            {item.completed ? 'completed' : 'not completed'}
+            {item.completed ? 'Выполнено' : 'Не выполнено'}
           </div>
           <div className={b('priority')}>
             <itemPriority.img />
