@@ -4,8 +4,8 @@
   padding: 1rem;
   padding-top: 2.5rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: end;
 
   &__name {
     color: var(--text-color);
