@@ -85,7 +85,7 @@ const Header = () => {
               })}
             >
               <div className={b('close')} onClick={() => setBurgerOpen(false)}>
-                X
+                ✖
               </div>
               <div className={b('top')}>
                 <div>To do app</div>

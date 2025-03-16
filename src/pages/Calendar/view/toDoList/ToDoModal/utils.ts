@@ -1,29 +1,29 @@
 export const priorities = [
   {
-    label: 'low',
+    label: 'Низкий',
     value: 0,
   },
   {
-    label: 'medium',
+    label: 'Средний',
     value: 1,
   },
   {
-    label: 'high',
+    label: 'Высокий',
     value: 2,
   },
 ];
 
 export const categories = [
   {
-    label: 'work',
+    label: 'Работа',
     value: 0,
   },
   {
-    label: 'personal',
+    label: 'Личное',
     value: 1,
   },
   {
-    label: 'other',
+    label: 'Другое',
     value: 2,
   }
 ];

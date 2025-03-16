@@ -54,7 +54,7 @@ const ToDoModal = ({ model }: IToDoModal) => {
         </div> */}
         <div className={b('input')}>
           <Input
-            placeholder="priority"
+            placeholder="Приоритет"
             type="select"
             value={model.taskState.priority}
             options={priorities}
@@ -63,7 +63,7 @@ const ToDoModal = ({ model }: IToDoModal) => {
         </div>
         <div className={b('input', 'last')}>
           <Input
-            placeholder="category"
+            placeholder="Категория"
             type="select"
             value={model.taskState.category}
             options={categories}
