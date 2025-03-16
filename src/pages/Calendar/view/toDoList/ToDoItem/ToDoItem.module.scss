@@ -90,9 +90,19 @@
     &__left {
       display: flex;
       justify-content: start;
+      margin-right: 1rem;
     }
     &__right {
-      display: flex;
+      max-width: 100%;  // Ограничивает максимальную ширину
+      width: auto;  // Ширина будет автоматически подстраиваться, но не превышать родительский элемент
+      overflow: hidden;  // Прячем все, что выходит за пределы
+      text-overflow: ellipsis;  // Добавляем многоточие
+    }
+
+    &__title {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
   }
 }
