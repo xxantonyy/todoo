@@ -5,11 +5,20 @@
   gap: 0.5rem;
   padding: 0.45rem;
   padding-left: 0.65rem;
-  border-bottom: 1px solid var(--border-color);
+  // border-bottom: 1px solid var(--border-color);
   transition: border-color 0.3s ease-in-out;
   margin-top: 0.3rem;
-  transition: border-bottom 0.6s;
   width: 100%;
+
+  ::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 2.6rem;
+    width: 99%;
+    height: 1px;
+    background-color: var(--border-color);
+  }
 
   &__textarea {
     position: relative;
@@ -20,9 +29,7 @@
     padding-left: 0.65rem;
     border: 1px solid var(--border-color);
     border-radius: 5px;
-    transition: border-color 0.3s ease-in-out;
     margin-top: 0.3rem;
-    transition: border-bottom 0.6s;
     width: 100%;
 
     textarea {
@@ -74,7 +81,7 @@
     border: 1px solid var(--text-color);
     transform: scaleY(0);
     transform-origin: bottom;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.4s ease-in-out;
   }
 
   &:focus-within {

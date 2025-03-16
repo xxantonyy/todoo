@@ -29,7 +29,7 @@ const ToDoModal = ({ model }: IToDoModal) => {
             onChange={(e) => model.handleChangeTask(e.target.value, 'title')}
           />
         </div>
-        <div className={b('input')}>
+        <div className={b('textarea')}>
           <Textarea
             className={'textarea'}
             placeholder="Описание"

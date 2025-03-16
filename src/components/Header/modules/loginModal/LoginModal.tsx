@@ -18,7 +18,7 @@ const LoginModal = () => {
 
   const content = (
     <form className={b('form')} onSubmit={(e) => model.onSubmit(e)}>
-      <div className={b('title')}>Login form</div>
+      <div className={b('title')}>Форма Авторизации</div>
       <div className={b('input')}>
         <Input
           title="Логин"
