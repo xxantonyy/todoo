@@ -22,8 +22,8 @@ const useCreateModal = () => {
     title: '',
     description: '',
     completed: false,
-    category: 0,
-    priority: 0,
+    category: null,
+    priority: null,
   });
 
   const handleChangeTask = (value: any, key: keyof ITask) => {

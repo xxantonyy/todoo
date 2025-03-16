@@ -56,7 +56,7 @@ const ToDoModal = ({ model }: IToDoModal) => {
           <Input
             placeholder="Приоритет"
             type="select"
-            value={model.taskState.priority}
+            value={model.taskState.priority || ""}
             options={priorities}
             onChange={(e) => model.handleChangeTask(e.target.value, 'priority')}
           />
@@ -65,7 +65,7 @@ const ToDoModal = ({ model }: IToDoModal) => {
           <Input
             placeholder="Категория"
             type="select"
-            value={model.taskState.category}
+            value={model.taskState.category || ""}
             options={categories}
             onChange={(e) => model.handleChangeTask(e.target.value, 'category')}
           />

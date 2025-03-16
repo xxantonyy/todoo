@@ -19,7 +19,8 @@ interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   options?: { label: string; value: string | number }[]; // Только для select
 }
 
-interface ITextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface ITextareaProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
   icon?: React.ReactNode;
   title?: string;
@@ -46,6 +47,9 @@ export const Input: React.FC<IInputProps> = ({
             className={b('field', { type })}
             {...(props as unknown as React.SelectHTMLAttributes<HTMLSelectElement>)}
           >
+            <option value="" disabled>
+              {props.placeholder}
+            </option>
             {options?.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -104,7 +108,12 @@ export const Textarea: React.FC<ITextareaProps> = ({
       {title && <span className={b('title')}>{title}</span>}
       <div className={b('wrapper')}>
         {icon && <span className={b('icon')}>{icon}</span>}
-        <textarea className={b('field')} style={{ resize: 'none' }} rows={5} {...props} />
+        <textarea
+          className={b('field')}
+          style={{ resize: 'none' }}
+          rows={5}
+          {...props}
+        />
       </div>
     </div>
   );
