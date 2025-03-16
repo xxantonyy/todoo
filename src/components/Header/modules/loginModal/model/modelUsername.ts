@@ -18,9 +18,14 @@ const useUsername = () => {
 
   const listUsernameItems = [
     {
-      label: 'Разлогиниться',
+      label: 'Выйти',
       key: 'logout',
       onClick: logout,
+    },
+    {
+      label: 'Фишка',
+      key: 'trick',
+      onClick: getNotify('ФИШКА ЕПТА', 'success', 3000, true),
     },
   ]
 

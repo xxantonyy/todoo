@@ -7,6 +7,7 @@ import Button from '@/components/Button/Buttons';
 import ToDoModal from './ToDoModal/ToDoModal';
 import useCreateModal from './ToDoModal/model';
 import { useMemo } from 'react';
+import { useTypedSelector } from '@/hooks/useTypedSelector';
 
 const b = block(cls.ToDoList);
 
@@ -17,6 +18,7 @@ interface IToDoList {
 const ToDoList = ({ list }: IToDoList) => {
   const model = useCreateModal();
   const isMobile = window.innerWidth < 820;
+  const actionProcessing = useTypedSelector((state) => state.todos.actionProcessing);
 
   const items = useMemo(() => {
     if (list?.length) {
