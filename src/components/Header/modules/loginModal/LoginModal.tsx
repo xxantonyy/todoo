@@ -38,7 +38,7 @@ const LoginModal = () => {
         />
       </div>
       <div className={b('submit')}>
-        <Button type="submit">Try it!</Button>
+        <Button type="submit">Войти</Button>
       </div>
     </form>
   );

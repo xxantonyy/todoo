@@ -91,9 +91,9 @@ const Header = () => {
                 <div>To do app</div>
                 <div className={b('routes')}>{allRoutes}</div>
               </div>
-              <div className={b('bottom')}>
+              <div className={b('bottom')} onClick={toggleTheme}>
                 Сменить тему
-                <div className={b('theme')} onClick={toggleTheme}>
+                <div className={b('theme')}>
                   {theme === 'light' ? (
                     <div className={b('theme-icon')}>
                       <img src={NightPNG} alt="night" />
