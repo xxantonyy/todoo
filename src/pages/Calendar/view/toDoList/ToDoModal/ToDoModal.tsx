@@ -20,7 +20,7 @@ const ToDoModal = ({ model }: IToDoModal) => {
 
   return (
     <Modal isOpen={isOpen} onClose={() => model.handleCloseModal()}>
-      {isPatch ? <div>Update Task</div> : <div>Create a new task</div>}
+      {isPatch ? <div>Изменить задачу</div> : <div>Создать новую задачу</div>}
       <form className={b('form')} onSubmit={(e) => model.handleCreateTask(e)}>
         <div className={b('input')}>
           <Input
@@ -72,15 +72,15 @@ const ToDoModal = ({ model }: IToDoModal) => {
         </div>
         <div className={b('button-submit')}>
           {isPatch && (
-            <Button onClick={(e) => model.handlePatchTask(e)}>Patch</Button>
+            <Button onClick={(e) => model.handlePatchTask(e)}>Обновить</Button>
           )}
-          {isCreateTask && <Button type="submit">Create new task</Button>}
+          {isCreateTask && <Button type="submit">Создать новую задачу</Button>}
           {!isCreateTask && (
             <Button
               className="delete"
               onClick={(e) => model.handleDeleteTask(e, model.taskState.id)}
             >
-              Delete
+              Удалить
             </Button>
           )}
         </div>

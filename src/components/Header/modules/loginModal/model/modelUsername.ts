@@ -17,7 +17,7 @@ const useUsername = () => {
 
   const listUsernameItems = [
     {
-      label: 'Разлогиниться ам ывапыв',
+      label: 'Разлогиниться',
       key: 'logout',
       onClick: logout,
     },
