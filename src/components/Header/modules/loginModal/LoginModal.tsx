@@ -54,7 +54,7 @@ const LoginModal = () => {
 
           <div className={b('username__list', { open: modelUsername.open })}>
             {modelUsername.listUsernameItems.map((item) => (
-              <div className={b('username__item')} key={item.key} onClick={() => item.onClick}>
+              <div className={b('username__item')} key={item.key} onClick={item.onClick}>
                 {item.label}
               </div>
             ))}
