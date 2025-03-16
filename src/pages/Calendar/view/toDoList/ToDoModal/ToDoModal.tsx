@@ -24,7 +24,7 @@ const ToDoModal = ({ model }: IToDoModal) => {
       <form className={b('form')} onSubmit={(e) => model.handleCreateTask(e)}>
         <div className={b('input')}>
           <Input
-            placeholder="title"
+            placeholder="Название"
             value={model.taskState.title}
             onChange={(e) => model.handleChangeTask(e.target.value, 'title')}
           />
@@ -32,7 +32,7 @@ const ToDoModal = ({ model }: IToDoModal) => {
         <div className={b('input')}>
           <Textarea
             className={'textarea'}
-            placeholder="description"
+            placeholder="Описание"
             value={model.taskState.description}
             onChange={(e) =>
               model.handleChangeTask(e.target.value, 'description')

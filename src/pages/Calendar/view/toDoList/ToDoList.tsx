@@ -51,11 +51,11 @@ const ToDoList = ({ list }: IToDoList) => {
           {list.length > 0 ? (
             <div className={b('content')}>
               <div className={b('headers')}>
-                <div>Title</div>
-                <div>Status</div>
-                <div>Priority</div>
-                <div>Category</div>
-                <div>Date</div>
+                <div>Заголовок</div>
+                <div>Статус</div>
+                <div>Приоритет</div>
+                <div>Категория</div>
+                <div>Дата</div>
               </div>
               {items}
             </div>

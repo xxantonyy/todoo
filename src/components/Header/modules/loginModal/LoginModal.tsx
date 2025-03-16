@@ -21,18 +21,18 @@ const LoginModal = () => {
       <div className={b('title')}>Login form</div>
       <div className={b('input')}>
         <Input
-          title="Login"
+          title="Логин"
           type="text"
-          placeholder="Login"
+          placeholder="Логин"
           value={model.values.login}
           onChange={(e) => model.onChangeValue(e.target.value, 'login')}
         />
       </div>
       <div className={b('input')}>
         <Input
-          title="Password"
+          title="Пароль"
           type="password"
-          placeholder="Password"
+          placeholder="Пароль"
           value={model.values.password}
           onChange={(e) => model.onChangeValue(e.target.value, 'password')}
         />
