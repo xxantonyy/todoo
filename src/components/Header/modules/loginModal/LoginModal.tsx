@@ -62,7 +62,7 @@ const LoginModal = () => {
         </div>
       ) : (
         <Button onClick={() => model.setOpen(true)} type="button">
-          login
+          Войти
         </Button>
       )}
 
