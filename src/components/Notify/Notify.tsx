@@ -35,10 +35,14 @@ const Notify = () => {
     }, duration);
   };
 
+  const handleClick = (id: number) => {
+    setNotifications((prev) => prev.filter((n) => n.id !== id));
+  };
+
   return ReactDOM.createPortal(
     <div className="notify-container">
       {notifications.map((notification) => (
-        <div key={notification.id} id={`notify-${notification.id}`} className={`notify notify--show ${notification.special ? 'notify--special' : ''}`}>
+        <div key={notification.id} id={`notify-${notification.id}`} className={`notify notify--show ${notification.special ? 'notify--special' : ''}`} onClick={() => handleClick(notification.id)}>
           {`${NotifyType[notification.type]} ${notification.text}`}
         </div>
       ))}
@@ -50,7 +54,7 @@ const Notify = () => {
 // Глобальная функция для вызова уведомления
 /**
  * Отображает уведомление с текстом text.
- * @param {string} text - текст уведомления - success: ✅ | default: "" | error: ❌ 
+ * @param {string} text - текст уведомления - success:  | default: "" | error: 
  * @param {NotifyType} [type="default"] - тип уведомления
  * @param {number} [duration=3000] - продолжительность уведомления в миллисекундах
  * @param {special} [special=false] - специальное уведомление
@@ -62,3 +66,4 @@ export const getNotify = (text: string, type?: NotifyType, duration?: number, sp
 };
 
 export default Notify;
+
