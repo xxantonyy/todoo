@@ -9,7 +9,7 @@ export const headerRoutes = [
   },
   {
     path: '/calendar',
-    name: 'Календарь',
+    name: 'Задачи',
     authRequeued: true,
     active: false,
   },

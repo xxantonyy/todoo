@@ -15,8 +15,6 @@ const useUsername = () => {
 
   const logout = () => dispatch(authActions.logout());
 
-
-
   const listUsernameItems = [
     {
       label: 'Разлогиниться ам ывапыв',
