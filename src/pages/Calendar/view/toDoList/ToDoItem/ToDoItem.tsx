@@ -59,7 +59,7 @@ const ToDoItem = ({ item, onClick }: IToDoItem) => {
           >
             <div className={b('left')}>Статус</div>
             <div className={b('right')}>
-              {item.completed ? 'completed' : 'not completed'}
+              {item.completed ? 'Выполнено' : 'Не выполнено'}
             </div>
           </div>
           <div className={b('priority')}>
