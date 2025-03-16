@@ -23,16 +23,6 @@ const useUsername = () => {
       key: 'logout',
       onClick: logout,
     },
-    {
-      label: '2342',
-      key: 'logout2',
-      onClick: () => console.log(123),
-    },
-    {
-      label: 'Разлогиниться ам ывапыв',
-      key: 'logout3',
-      onClick: () => console.log(123),
-    },
   ]
 
   useEffect(() => {
