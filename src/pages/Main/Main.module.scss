@@ -1,6 +1,8 @@
 .main {
   position: static;
   box-sizing: border-box;
+  padding: 1rem;
+  padding-top: 2.5rem;
 
   &__name {
     color: var(--text-color);
