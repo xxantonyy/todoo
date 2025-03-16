@@ -26,6 +26,8 @@ const useCreateModal = () => {
     priority: 0,
   });
 
+  console.log(isOpen, isCreateTask, isPatch)
+
   const handleChangeTask = (value: any, key: keyof ITask) => {
     switch (key) {
       case 'category':
@@ -55,9 +57,7 @@ const useCreateModal = () => {
 
   const handleCreateTask = (e: any) => {
     e.preventDefault();
-    setIsCreateTask(false);
-    setIsPatch(false);
-    dispatch(todosActions.createTodo({item: taskState, callback: () => setIsOpen(false)}));
+    dispatch(todosActions.createTodo({item: taskState, callback: () => {setIsOpen(false); setIsCreateTask(false)}}));
   }
 
   const handleClickOnTask = (task: ITask) => {
