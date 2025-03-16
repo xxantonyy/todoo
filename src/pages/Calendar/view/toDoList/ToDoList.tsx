@@ -19,7 +19,7 @@ const ToDoList = ({ list }: IToDoList) => {
   const isMobile = window.innerWidth < 820;
 
   const items = useMemo(() => {
-    if (list.length) {
+    if (list?.length) {
       return list?.map((item) => (
         <ToDoItem
           key={item.id}
