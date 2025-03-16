@@ -30,7 +30,7 @@ const ToDoList = ({ list }: IToDoList) => {
     } else {
       return (
         <div>
-          <p>There are no tasks</p>
+          <p>Задачь нету, пора что-то придумать!</p>
         </div>
       );
     }
@@ -41,9 +41,9 @@ const ToDoList = ({ list }: IToDoList) => {
       {!isMobile && (
         <div className={b()}>
           <div className={b('header')}>
-            <div className={b('title')}>Tasks</div>
+            <div className={b('title')}>Задачи</div>
             <Button type="button" onClick={() => model.handleOpenCreateTask()}>
-              Add new task
+              Новая задача
             </Button>
           </div>
           {list.length > 0 ? (
@@ -67,9 +67,9 @@ const ToDoList = ({ list }: IToDoList) => {
       {isMobile && (
         <div className={b()}>
           <div className={b('header')}>
-            <div className={b('title')}>Tasks</div>
+            <div className={b('title')}>Задачи</div>
             <Button type="button" onClick={() => model.handleOpenCreateTask()}>
-              Add new task
+              Новая задача
             </Button>
           </div>
           <div className={b('content')}>{items}</div>

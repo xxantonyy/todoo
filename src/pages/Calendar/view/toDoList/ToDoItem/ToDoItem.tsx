@@ -17,8 +17,6 @@ const ToDoItem = ({ item, onClick }: IToDoItem) => {
   const itemCategory = category[item.category];
   const isMobile = window.innerWidth < 820;
 
-  console.log(itemPriority)
-
   return (
     <>
       {!isMobile && (
@@ -52,30 +50,30 @@ const ToDoItem = ({ item, onClick }: IToDoItem) => {
       {isMobile && (
         <div className={b('mobile')}>
           <div className={b('title')} onClick={() => onClick(item)}>
-            <div className={b('left')}>Title</div>
+            <div className={b('left')}>Название</div>
             <div className={b('right')}>{item.title}</div>
           </div>
           <div
             className={b('status')}
             onClick={() => model.handleChangeStatus(item)}
           >
-            <div className={b('left')}>Status</div>
+            <div className={b('left')}>Статус</div>
             <div className={b('right')}>
               {item.completed ? 'completed' : 'not completed'}
             </div>
           </div>
           <div className={b('priority')}>
-            <div className={b('left')}>Priority</div>
+            <div className={b('left')}>Приоритет</div>
             <div className={b('right')}>
               <itemPriority.img />
             </div>
           </div>
           <div className={b('label')}>
-            <div className={b('left')}>Category</div>
+            <div className={b('left')}>Категория</div>
             <div className={b('right')}>{itemCategory.label}</div>
           </div>
           <div className={b('date')}>
-            <div className={b('left')}>Date</div>
+            <div className={b('left')}>Дата</div>
             <div className={b('right')}>
               {new Date(item.date).toLocaleDateString('ru', {
                 year: 'numeric',

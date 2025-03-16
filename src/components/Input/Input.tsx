@@ -19,6 +19,12 @@ interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   options?: { label: string; value: string | number }[]; // Только для select
 }
 
+interface ITextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  className?: string;
+  icon?: React.ReactNode;
+  title?: string;
+}
+
 export const Input: React.FC<IInputProps> = ({
   className,
   icon,
@@ -85,4 +91,21 @@ export const Input: React.FC<IInputProps> = ({
         </>
       );
   }
+};
+
+export const Textarea: React.FC<ITextareaProps> = ({
+  className,
+  icon,
+  title,
+  ...props
+}) => {
+  return (
+    <div className={b(null, className)}>
+      {title && <span className={b('title')}>{title}</span>}
+      <div className={b('wrapper')}>
+        {icon && <span className={b('icon')}>{icon}</span>}
+        <textarea className={b('field')} style={{ resize: 'none' }} rows={5} {...props} />
+      </div>
+    </div>
+  );
 };

@@ -3,13 +3,13 @@ import { useTypedSelector } from "@/hooks/useTypedSelector";
 export const headerRoutes = [
   {
     path: '/',
-    name: 'Main',
+    name: 'Главная',
     authRequeued: false,
     active: false,
   },
   {
     path: '/calendar',
-    name: 'Calendar',
+    name: 'Календарь',
     authRequeued: true,
     active: false,
   },

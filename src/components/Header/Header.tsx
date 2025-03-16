@@ -70,7 +70,7 @@ const Header = () => {
               <div className={b('left-block')}>To do app</div>
               <LoginModal />
               <div onClick={() => setBurgerOpen(!burgerOpen)}>
-                <div>Menu</div>
+                <div>Меню</div>
               </div>
             </div>
           </div>
@@ -92,7 +92,7 @@ const Header = () => {
                 <div className={b('routes')}>{allRoutes}</div>
               </div>
               <div className={b('bottom')}>
-                Theme switcher
+                Сменить тему
                 <div className={b('theme')} onClick={toggleTheme}>
                   {theme === 'light' ? (
                     <div className={b('theme-icon')}>

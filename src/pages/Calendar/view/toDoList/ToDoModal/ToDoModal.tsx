@@ -1,4 +1,4 @@
-import { Input } from '@/components/Input/Input';
+import { Input, Textarea } from '@/components/Input/Input';
 import { Modal } from '@/components/Modal/Modal';
 import block from 'bem-cn';
 
@@ -30,7 +30,8 @@ const ToDoModal = ({ model }: IToDoModal) => {
           />
         </div>
         <div className={b('input')}>
-          <Input
+          <Textarea
+            className={'textarea'}
             placeholder="description"
             value={model.taskState.description}
             onChange={(e) =>
