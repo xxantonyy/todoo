@@ -21,6 +21,7 @@
   &__input {
     margin-bottom: 1rem;
     height: 4.2rem;
+
   }
 
   &__username {
@@ -88,6 +89,7 @@
 
 @media screen and (max-width: 820px) {
   .LoginModal {
-    min-width: unset;
+    min-width: fit-content;
+    padding-right: 1rem;
   }
 }
