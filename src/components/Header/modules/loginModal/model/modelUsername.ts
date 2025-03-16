@@ -25,7 +25,7 @@ const useUsername = () => {
     {
       label: 'Фишка',
       key: 'trick',
-      onClick: getNotify('ФИШКА ЕПТА', 'success', 3000, true),
+      onClick: () => getNotify('ФИШКА ЕПТА', 'success', 3000, true),
     },
   ]
 
