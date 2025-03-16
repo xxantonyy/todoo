@@ -5,7 +5,7 @@
   padding-top: 1rem;
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: start;
 
   &__name {
     color: var(--text-color);
@@ -19,7 +19,7 @@
     padding-top: 2.5rem;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: start;
   }
   
 }
