@@ -20,21 +20,24 @@ const Calendar = memo(() => {
   const { auth } = useTypedSelector((state) => state.auth);
 
   useEffect(() => {
-    if(auth === null) {
+    if (auth === null) {
       getNotify('You are not authorized', 'error', 3000);
       navigation('/');
       return;
     }
 
-    dispatch(todosActions.getTodos()); 
+    dispatch(
+      todosActions.getTodos({ data: { }})
+    );
   }, []);
 
-  return <div className={b()}>
-    <div className={b('content')}>
-      <ToDoList list={todos}/>
+  return (
+    <div className={b()}>
+      <div className={b('content')}>
+        <ToDoList list={todos} />
+      </div>
     </div>
-  </div>;
+  );
 });
-
 
 export default Calendar;

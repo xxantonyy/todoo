@@ -121,12 +121,12 @@
 
   &__select {
     display: flex;
-
+    min-width: 60%;
+  
     select {
       border: none;
       background: transparent;
       color: var(--text-color);
-
       option {
         background-color: var(--background-color);
         color: var(--text-color);

@@ -8,6 +8,9 @@ import ToDoModal from './ToDoModal/ToDoModal';
 import useCreateModal from './ToDoModal/model';
 import { useMemo } from 'react';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
+import useFilters from './FiltersModal/useFilters';
+import FiltersModal from './FiltersModal/FiltersModal';
+import { Loading } from '@/widgets/Loading/Loading';
 
 const b = block(cls.ToDoList);
 
@@ -17,11 +20,14 @@ interface IToDoList {
 
 const ToDoList = ({ list }: IToDoList) => {
   const model = useCreateModal();
+  const filters = useFilters();
   const isMobile = window.innerWidth < 820;
-  const actionProcessing = useTypedSelector((state) => state.todos.actionProcessing);
+  const actionProcessing = useTypedSelector(
+    (state) => state.todos.actionProcessing
+  );
 
   const items = useMemo(() => {
-    if (list?.length) {
+    if (list?.length > 0) {
       return list?.map((item) => (
         <ToDoItem
           key={item.id}
@@ -29,28 +35,31 @@ const ToDoList = ({ list }: IToDoList) => {
           onClick={() => model.handleClickOnTask(item)}
         />
       ));
-    } else {
-      if(!actionProcessing) {
-        <div>
-          <p>Задач нету, пора что-то придумать!</p>
-        </div>
-      } else {
-        return null
-      }
+    } else if (!actionProcessing) {
+      return <div>Задач нету, пора что-то придумать!</div>;
     }
   }, [list]);
 
   return (
     <>
+    {/* {!actionProcessing ? <Loading /> : ''} */}
       {!isMobile && (
         <div className={b()}>
           <div className={b('header')}>
             <div className={b('title')}>Задачи</div>
-            <Button type="button" onClick={() => model.handleOpenCreateTask()}>
-              Новая задача
-            </Button>
+            <div className={b('buttons')}>
+              <Button type="button" onClick={() => filters.handleOpenFilters()}>
+                Фильтры
+              </Button>
+              <Button
+                type="button"
+                onClick={() => model.handleOpenCreateTask()}
+              >
+                Новая задача
+              </Button>
+            </div>
           </div>
-          {list.length > 0 ? (
+          {list?.length > 0 ? (
             <div className={b('content')}>
               <div className={b('headers')}>
                 <div>Заголовок</div>
@@ -76,10 +85,16 @@ const ToDoList = ({ list }: IToDoList) => {
               Новая задача
             </Button>
           </div>
+          <div>
+            <Button type="button" onClick={() => filters.handleOpenFilters()}>
+              Фильтры
+            </Button>
+          </div>
           <div className={b('content')}>{items}</div>
         </div>
       )}
       <ToDoModal model={model} />
+      <FiltersModal model={filters} />
     </>
   );
 };

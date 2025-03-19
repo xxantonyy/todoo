@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { categories, priorities } from "./utils";
 import { useTypedDispatch } from "@/hooks/useTypedDispatch";
 import { todosActions } from '@/store/reducers/toDo/toDoSlice';
+import { priority } from "../../utils";
+import { IToDoPayload } from "@/store/reducers/toDo/types";
 
 interface ITask {
   id: string,
@@ -55,7 +57,7 @@ const useCreateModal = () => {
 
   const handleCreateTask = (e: any) => {
     e.preventDefault();
-    dispatch(todosActions.createTodo({item: taskState, callback: () => {setIsOpen(false); setIsCreateTask(false)}}));
+    dispatch(todosActions.createTodo({ item: taskState, callback: () => { setIsOpen(false); setIsCreateTask(false) } }));
   }
 
   const handleClickOnTask = (task: ITask) => {
@@ -74,13 +76,12 @@ const useCreateModal = () => {
 
   const handlePatchTask = (e: any) => {
     e.preventDefault();
-    dispatch(todosActions.updateTodo({item: taskState, callback: () => setIsOpen(false)}));
+    dispatch(todosActions.updateTodo({ item: taskState, callback: () => setIsOpen(false) }));
   }
-
 
   const handleDeleteTask = (e: any, id: string) => {
     e.preventDefault();
-    dispatch(todosActions.deleteTodo({id , callback:handleCloseModal}));
+    dispatch(todosActions.deleteTodo({ id, callback: handleCloseModal }));
   }
 
   return {

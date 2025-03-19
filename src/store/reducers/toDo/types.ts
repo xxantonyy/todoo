@@ -13,11 +13,20 @@ export interface IToDoState {
   todos: ITodoResponseConverted[];
 }
 
+export interface IToDoPayload {
+  priority?: number | null,
+  category?: number | null,
+  sortBy?: 'priority' | 'category' | 'date' | 'completed' | null,
+  order?: 'desc' | 'asc'| null,
+  date?: string| null,
+  completed?: number | null,
+}
+
 export type TToDoPagesPayload = {
   [EToDoActionDataTypes.GET_TODOS]?: {
     todos: ITodoResponseConverted[];
   };
 }
 
-export interface IToDoAction<TArgs> extends IAction<EToDoActionDataTypes, TToDoPagesPayload, TArgs> {}
-export interface IToDosActionData extends IActionData<EToDoActionDataTypes, TToDoPagesPayload> {}
+export interface IToDoAction<TArgs> extends IAction<EToDoActionDataTypes, TToDoPagesPayload, TArgs> { }
+export interface IToDosActionData extends IActionData<EToDoActionDataTypes, TToDoPagesPayload> { }

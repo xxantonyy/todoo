@@ -2,21 +2,21 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { TAppThunkAPI } from '@/store/types';
 import initialState from "./initial";
 import { persistStore } from 'redux-persist';
-import { EToDoActionDataTypes } from "./types";
+import { EToDoActionDataTypes, IToDoPayload } from "./types";
 import { IPartialTodoResponseConverted, ITodoResponseConverted } from "@/api/TodoApi/types";
 import { store } from "@/store/store";
 import { getNotify } from "@/components/Notify/Notify";
 
 const getTodos = createAsyncThunk<
   { todos: ITodoResponseConverted[] | null },
-  void,
+  { data?: IToDoPayload },
   TAppThunkAPI
 >(
   EToDoActionDataTypes.GET_TODOS,
-  async (_, thunkAPI) => {
+  async (data, thunkAPI) => {
     const { getState, extra: { api } } = thunkAPI;
     const state = getState();
-    const response = await api.toDo.getTodos(state.auth.token);
+    const response = await api.toDo.getTodos(state.auth.token, data.data);
 
     if (response.success) {
       return {
@@ -48,8 +48,8 @@ const updateTodo = createAsyncThunk<
 
     if (response.success) {
       getNotify('Задача обновлена', "success");
-      if(body.callback) body.callback();
-      dispatch(getTodos());
+      if (body.callback) body.callback();
+      dispatch(getTodos({}));
     } else {
       console.error(`error in ${EToDoActionDataTypes.UPDATE_TODO}, message: ${response.errorMessage}`);
     }
@@ -73,8 +73,8 @@ const createTodo = createAsyncThunk<
 
     if (response.success) {
       getNotify('Задача успешно создана!', "success");
-      dispatch(getTodos());
-      if(body.callback) body.callback();
+      dispatch(getTodos({}));
+      if (body.callback) body.callback();
     } else {
       console.error(`error in ${EToDoActionDataTypes.CREATE_TODO}, message: ${response.errorMessage}`);
     }
@@ -98,8 +98,8 @@ const deleteTodo = createAsyncThunk<
 
     if (response.success) {
       getNotify('Задача успешно удалена!', "success");
-      if(body.callback) body.callback();
-      dispatch(getTodos());
+      if (body.callback) body.callback();
+      dispatch(getTodos({}));
     } else {
       console.error(`error in ${EToDoActionDataTypes.DELETE_TODO}, message: ${response.errorMessage}`);
     }
@@ -125,7 +125,7 @@ export const todosSlice = createSlice({
       state.todos = null
       state.actionProcessing = false
     });
-    
+
 
     // updateTodo
     builder.addCase(updateTodo.pending, (state, action) => {

@@ -1,3 +1,4 @@
+import { IToDoPayload } from "@/store/reducers/toDo/types";
 import BaseAPI from "../BaseApi"
 import { EQueryTypes } from "../types";
 import { Converter } from "./Converter";
@@ -9,11 +10,13 @@ const TodoApi = () => {
   const api = BaseAPI(API_URL);
   const converter = Converter();
 
-  const getTodos = (authToken: string) =>
+  const getTodos = (authToken: string, data?: IToDoPayload) =>
     api.sendQuery<ITodoResponse[], ITodoResponseConverted[]>({
       type: EQueryTypes.GET,
       url: '/todos',
-      params: {},
+      params: {
+        ...data,
+      },
       options: {
         headers: {
           Authorization: `Bearer ${authToken}`

@@ -1,0 +1,45 @@
+.filtersModal {
+  display: flex;
+
+  &__input {
+    height: 2.975rem;
+    margin-top: 0.725rem;
+    display: flex;
+    align-items: center;
+  }
+  &__input__last {
+    height: 2.975rem;
+    margin-top: 0.725rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.525rem;
+  }
+
+  &__textarea  {
+    margin-top: 0.725rem;
+    display: flex;
+    align-items: center;
+  }
+
+
+  &__checkbox {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: start;
+    padding-top: 0.5rem;
+  }
+
+  &__button {
+
+    &-submit {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 1rem;
+  }
+}
