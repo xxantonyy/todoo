@@ -12,7 +12,7 @@ export interface IRoute {
 export enum RouteNames {
   HOME = '/',
   ERROR = '*',
-  CALENDAR = '/calendar',
+  CALENDAR = '/todos',
 }
 
 export const publicRoutes: IRoute[] = [

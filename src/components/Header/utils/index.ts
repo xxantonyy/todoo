@@ -8,7 +8,7 @@ export const headerRoutes = [
     active: false,
   },
   {
-    path: '/calendar',
+    path: '/todos',
     name: 'Задачи',
     authRequeued: true,
     active: false,

@@ -5,15 +5,15 @@ import block from 'bem-cn';
 import { todosActions } from '@/store/reducers/toDo/toDoSlice';
 import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 
-import cls from './Calendar.module.scss';
+import cls from './toDos.module.scss';
 import ToDoList from './view/toDoList/ToDoList';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
 import { getNotify } from '@/components/Notify/Notify';
 import { useNavigate } from 'react-router-dom';
 
-const b = block(cls.Calendar);
+const b = block(cls.toDos);
 
-const Calendar = memo(() => {
+const toDos = memo(() => {
   const dispatch = useTypedDispatch();
   const navigation = useNavigate();
   const { todos } = useTypedSelector((state) => state.todos);
@@ -40,4 +40,4 @@ const Calendar = memo(() => {
   );
 });
 
-export default Calendar;
+export default toDos;
