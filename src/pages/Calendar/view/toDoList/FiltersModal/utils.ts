@@ -1,7 +1,7 @@
 export const priorities = [
   {
     label: 'Без приоритета',
-    value: -1,
+    value: '',
   },
   {
     label: 'Низкий',
@@ -20,7 +20,7 @@ export const priorities = [
 export const categories = [
   {
     label: 'Без категории',
-    value: -1,
+    value: '',
   },
   {
     label: 'Работа',
@@ -39,7 +39,7 @@ export const categories = [
 export const order = [
   {
     label: 'Без порядка',
-    value: -1,
+    value: '',
   },
   {
     label: 'Возрастанию',
@@ -54,7 +54,7 @@ export const order = [
 export const sortBy = [
   {
     label: 'Без сортировки по',
-    value: -1,
+    value: '',
   },
   {
     label: 'Категории',

@@ -21,10 +21,10 @@ const useFilters = () => {
   const handleChangeFilters = (value: any, key: keyof IToDoPayload) => {
     switch (key) {
       case 'priority':
-        setSortOrder({ ...sortOrder, priority: Number(value) >= 0 ? Number(value) : null });
+        setSortOrder({ ...sortOrder, priority: value !== '' ? value : null });
         break;
       case 'category':
-        setSortOrder({ ...sortOrder, category: Number(value) >= 0 ? Number(value) : null });
+        setSortOrder({ ...sortOrder, category: value !== '' ? value : null });
         break;
       case 'sortBy':
         setSortOrder({ ...sortOrder, sortBy: value });
@@ -38,7 +38,7 @@ const useFilters = () => {
       default: break;
     }
   }
-
+  
   const handleSendFilters = (e: any) => {
     e.preventDefault();
 

@@ -47,7 +47,7 @@ export const Input: React.FC<IInputProps> = ({
             className={b('field', { type })}
             {...(props as unknown as React.SelectHTMLAttributes<HTMLSelectElement>)}
           >
-            <option value="null" disabled>
+            <option value="" disabled>
               {props.placeholder}
             </option>
             {options?.map((option) => (
