@@ -67,5 +67,9 @@ export const sortBy = [
   {
     label: 'Статусу',
     value: 'completed',
+  },
+  {
+    label: 'Дата',
+    value: 'date',
   }
 ];

@@ -35,6 +35,9 @@ const useFilters = () => {
       case 'completed':
         setSortOrder({ ...sortOrder, completed: value });
         break;
+      case 'date':
+        setSortOrder({ ...sortOrder, completed: value });
+        break;
       default: break;
     }
   }
