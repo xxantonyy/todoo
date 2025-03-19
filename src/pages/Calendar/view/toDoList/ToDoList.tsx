@@ -30,11 +30,13 @@ const ToDoList = ({ list }: IToDoList) => {
         />
       ));
     } else {
-      return (
+      if(!actionProcessing) {
         <div>
           <p>Задач нету, пора что-то придумать!</p>
         </div>
-      );
+      } else {
+        return null
+      }
     }
   }, [list]);
 
