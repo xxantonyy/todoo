@@ -4,11 +4,17 @@
   padding: 1rem;
   padding-top: 1rem;
   display: flex;
-  align-items: center;
-  justify-content: start;
+  align-items: start;
+  flex-direction: column;
 
-  &__name {
-    color: var(--text-color);
+  &__news {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  &__item {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
   }
 }
 
@@ -18,8 +24,17 @@
     padding: 1rem;
     padding-top: 2.5rem;
     display: flex;
-    align-items: center;
-    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+
+    &__news {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    &__item {
+      margin-bottom: 1rem;
+      margin-top: 1rem;
+    }
   }
-  
 }

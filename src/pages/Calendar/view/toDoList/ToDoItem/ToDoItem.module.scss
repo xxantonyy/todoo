@@ -43,6 +43,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    text-wrap: auto;
   }
   
 
@@ -97,6 +98,7 @@
       width: auto;  // Ширина будет автоматически подстраиваться, но не превышать родительский элемент
       overflow: hidden;  // Прячем все, что выходит за пределы
       text-overflow: ellipsis;  // Добавляем многоточие
+      text-wrap: auto;
     }
 
     &__title {
