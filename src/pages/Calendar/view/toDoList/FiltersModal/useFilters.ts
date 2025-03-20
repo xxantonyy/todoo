@@ -1,19 +1,21 @@
 import { useTypedDispatch } from "@/hooks/useTypedDispatch";
+import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { todosActions } from "@/store/reducers/toDo/toDoSlice";
 import { IToDoPayload } from "@/store/reducers/toDo/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useFilters = () => {
   const dispatch = useTypedDispatch();
   const [isOpen, setIsOpen] = useState(false);
-  const [sortOrder, setSortOrder] = useState<IToDoPayload>({
-    priority: null,
-    category: null,
-    sortBy: null,
-    order: null,
-    date: null,
-    completed: null,
-  });
+  const sortOrder = useTypedSelector(state => state.todos.sortOrder);
+  // const [sortOrder, setSortOrder] = useState<IToDoPayload>({
+  //   priority: null,
+  //   category: null,
+  //   sortBy: null,
+  //   order: null,
+  //   date: null,
+  //   completed: null,
+  // });
 
   const handleOpenFilters = () => setIsOpen(true);
   const handleCloseFilters = () => setIsOpen(false);
@@ -21,27 +23,27 @@ const useFilters = () => {
   const handleChangeFilters = (value: any, key: keyof IToDoPayload) => {
     switch (key) {
       case 'priority':
-        setSortOrder({ ...sortOrder, priority: value !== '' ? value : null });
+        dispatch(todosActions.changeSortOrder({ key: 'priority', value: value !== '' ? value : null }));
         break;
       case 'category':
-        setSortOrder({ ...sortOrder, category: value !== '' ? value : null });
+        dispatch(todosActions.changeSortOrder({ key: 'category', value: value !== '' ? value : null }));
         break;
       case 'sortBy':
-        setSortOrder({ ...sortOrder, sortBy: value });
+        dispatch(todosActions.changeSortOrder({ key: 'sortBy', value }));
         break;
       case 'order':
-        setSortOrder({ ...sortOrder, order: value });
+        dispatch(todosActions.changeSortOrder({ key: 'order', value }));
         break;
       case 'completed':
-        setSortOrder({ ...sortOrder, completed: value });
+        dispatch(todosActions.changeSortOrder({ key: 'completed', value }));
         break;
       case 'date':
-        setSortOrder({ ...sortOrder, completed: value });
+        dispatch(todosActions.changeSortOrder({ key: 'completed', value }));
         break;
       default: break;
     }
   }
-  
+
   const handleSendFilters = (e: any) => {
     e.preventDefault();
 
@@ -51,13 +53,18 @@ const useFilters = () => {
 
   const handleRefreshFilters = (e: any) => {
     e.preventDefault();
-    setSortOrder({ priority: null, category: null, sortBy: null, order: null, date: null, completed: null });
+    dispatch(todosActions.changeSortOrder({ all: true }));
+
   }
+
+  useEffect(() => {
+    dispatch(todosActions.getTodos({ data: sortOrder }));
+  }, [])
 
   return {
     isOpen,
     sortOrder,
-    setSortOrder,
+    setSortOrder: todosActions.changeSortOrder,
     handleOpenFilters,
     handleCloseFilters,
     handleSendFilters,

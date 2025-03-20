@@ -11,6 +11,7 @@ export enum EToDoActionDataTypes {
 export interface IToDoState {
   actionProcessing: boolean;
   todos: ITodoResponseConverted[];
+  sortOrder: IToDoPayload;
 }
 
 export interface IToDoPayload {

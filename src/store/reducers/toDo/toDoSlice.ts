@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TAppThunkAPI } from '@/store/types';
 import initialState from "./initial";
 import { persistStore } from 'redux-persist';
@@ -49,7 +49,7 @@ const updateTodo = createAsyncThunk<
     if (response.success) {
       getNotify('Задача обновлена', "success");
       if (body.callback) body.callback();
-      dispatch(getTodos({}));
+      dispatch(getTodos({ data: thunkAPI.getState().todos.sortOrder }));
     } else {
       console.error(`error in ${EToDoActionDataTypes.UPDATE_TODO}, message: ${response.errorMessage}`);
     }
@@ -110,6 +110,18 @@ export const todosSlice = createSlice({
   name: 'todos',
   initialState,
   reducers: {
+    changeSortOrder: (
+      state,
+      action: PayloadAction<{ key?: keyof IToDoPayload; value?: IToDoPayload[typeof action.payload.key]; all?: boolean }>
+    ) => {
+      if (action.payload.all) {
+        state.sortOrder = { priority: null, category: null, sortBy: null, order: null, date: null, completed: null };
+      }
+      state.sortOrder = {
+        ...state.sortOrder,
+        [action.payload.key]: action.payload.value
+      }
+    },
   },
   extraReducers: (builder) => {
 
