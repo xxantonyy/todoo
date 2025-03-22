@@ -38,7 +38,7 @@ const ToDoList = ({ list }: IToDoList) => {
     } else if (!actionProcessing) {
       return <div>Задач нету, пора что-то придумать!</div>;
     }
-  }, [list]);
+  }, [list, actionProcessing]);
 
   return (
     <>
