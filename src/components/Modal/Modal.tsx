@@ -26,7 +26,13 @@ export const Modal: React.FC<IModalProps> = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
   const content = (
-    <div className={b({ open: isOpen })} onClick={(e) => e.stopPropagation()}>
+    <div
+      className={b({ open: isOpen })}
+      onClick={(e) => {
+        e.stopPropagation();
+        onClose();
+      }}
+    >
       <div className={b('content')} onClick={(e) => e.stopPropagation()}>
         {children}
         <button className={b('close')} onClick={onClose}>
