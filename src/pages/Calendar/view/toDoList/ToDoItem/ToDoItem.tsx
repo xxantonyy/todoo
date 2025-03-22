@@ -20,13 +20,11 @@ const ToDoItem = ({ item, onClick }: IToDoItem) => {
   return (
     <>
       {!isMobile && (
-        <div className={b()}>
-          <div className={b('title')} onClick={() => onClick(item)}>
-            {item.title}
-          </div>
+        <div className={b()} onClick={() => onClick(item)}>
+          <div className={b('title')}>{item.title}</div>
           <div
             className={b('status')}
-            onClick={() => model.handleChangeStatus(item)}
+            onClick={(e) => model.handleChangeStatus(item, e)}
           >
             {item.completed ? 'Выполнено' : 'Не выполнено'}
           </div>
@@ -48,14 +46,14 @@ const ToDoItem = ({ item, onClick }: IToDoItem) => {
 
       {/* mobile */}
       {isMobile && (
-        <div className={b('mobile')}>
-          <div className={b('title')} onClick={() => onClick(item)}>
+        <div className={b('mobile')} onClick={() => onClick(item)}>
+          <div className={b('title')}>
             <div className={b('left')}>Название</div>
             <div className={b('right')}>{item.title}</div>
           </div>
           <div
             className={b('status')}
-            onClick={() => model.handleChangeStatus(item)}
+            onClick={(e) => model.handleChangeStatus(item, e)}
           >
             <div className={b('left')}>Статус</div>
             <div className={b('right')}>

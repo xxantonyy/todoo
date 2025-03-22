@@ -6,7 +6,8 @@ import { useState } from "react";
 const useToDoModel = () => {
   const dispatch = useTypedDispatch();
 
-  const handleChangeStatus = (item: ITodoResponseConverted) => {
+  const handleChangeStatus = (item: ITodoResponseConverted, e: any) => {
+    e.stopPropagation();
     dispatch(todosActions.updateTodo({ item: { ...item, completed: !item.completed } }))
   }
 
