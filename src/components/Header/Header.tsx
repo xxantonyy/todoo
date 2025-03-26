@@ -77,8 +77,10 @@ const Header = () => {
 
           <div
             className={b('burger', { open: burgerOpen, close: !burgerOpen })}
+            onClick={() => setBurgerOpen(!burgerOpen)}
           >
             <div
+              onClick={(e) => e.stopPropagation()}
               className={b('container', {
                 open: burgerOpen,
                 close: !burgerOpen,
