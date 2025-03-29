@@ -12,10 +12,21 @@ const Main = memo(() => {
       <hr style={{ width: '100%' }} />
       <div className={b('news')}>
         <div className={b('item')}>
+          <div>Обновление 29.03.2025</div>
+          <div>✅ 1 - Оптимизация рендера</div>
+          <div>✅ 2 - Оптимизация запросов</div>
+          <div>✅ 3 - Добавлены различные виды уведомлений при обработке ответов и ошибок при запросе к серверу</div>
+        </div>
+      </div>
+
+      <hr style={{ width: '100%' }} />
+      <div className={b('news')}>
+        <div className={b('item')}>
           <div>Обновление 22.03.2025</div>
           <div>✅ 1 - Теперь при клике в любое место на таске она открывается, по клику на статус по прежнему изменяется статус</div>
         </div>
       </div>
+
       <hr style={{ width: '100%' }} />
       <div className={b('news')}>
         <div className={b('item')}>
