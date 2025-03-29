@@ -1,19 +1,21 @@
 import { memo, useEffect } from 'react';
 
 import block from 'bem-cn';
+import { useNavigate } from 'react-router-dom';
 
 import { todosActions } from '@/store/reducers/toDo/toDoSlice';
-import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 
-import cls from './toDos.module.scss';
-import ToDoList from './view/toDoList/ToDoList';
+import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
+
 import { getNotify } from '@/components/Notify/Notify';
-import { useNavigate } from 'react-router-dom';
+
+import ToDoList from './view/toDoList/ToDoList';
+import cls from './ToDos.module.scss';
 
 const b = block(cls.toDos);
 
-const toDos = memo(() => {
+const ToDos = memo(() => {
   const dispatch = useTypedDispatch();
   const navigation = useNavigate();
   const { todos } = useTypedSelector((state) => state.todos);
@@ -40,4 +42,4 @@ const toDos = memo(() => {
   );
 });
 
-export default toDos;
+export default ToDos;

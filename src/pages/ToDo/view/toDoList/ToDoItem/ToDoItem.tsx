@@ -2,7 +2,7 @@ import block from 'bem-cn';
 
 import cls from './ToDoItem.module.scss';
 import { ITodoResponseConverted } from '@/api/TodoApi/types';
-import { category, priority } from '@/pages/Calendar/view/utils';
+import { category, priority } from '@/pages/ToDo/view/utils';
 import useToDoModel from './model';
 
 const b = block(cls.ToDoItem);

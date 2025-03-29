@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Error } from '@/pages/Error';
 import { Main } from '@/pages/Main';
-import { Calendar } from '@/pages/Calendar';
+import { ToDos } from '@/pages/ToDo';
 
 export interface IRoute {
   path: string;
@@ -21,5 +21,5 @@ export const publicRoutes: IRoute[] = [
 ];
 
 export const privateRoutes: IRoute[] = [
-  { path: RouteNames.CALENDAR, component: <Calendar /> },
+  { path: RouteNames.CALENDAR, component: <ToDos /> },
 ];
