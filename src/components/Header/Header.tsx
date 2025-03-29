@@ -1,7 +1,7 @@
 import { useTheme } from '@/shared/ThemeProvider/ThemeProvider';
 import Button from '@/components/Button/Buttons';
 import { useNavigate } from 'react-router-dom';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { getActiveRoutes } from './utils';
 import LoginModal from './modules/loginModal/LoginModal';
 
@@ -37,6 +37,8 @@ const Header = () => {
       )),
     [routes]
   );
+
+  useEffect(() => {}, [isMobile]);
 
   return (
     <>

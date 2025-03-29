@@ -23,7 +23,7 @@ const ToDos = memo(() => {
 
   useEffect(() => {
     if (auth === null) {
-      getNotify('You are not authorized', 'error', 3000);
+      getNotify('Вы не авторизованы!', 'error', 3000);
       navigation('/');
       return;
     }

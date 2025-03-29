@@ -6,7 +6,7 @@ import ToDoItem from './ToDoItem/ToDoItem';
 import Button from '@/components/Button/Buttons';
 import ToDoModal from './ToDoModal/ToDoModal';
 import useCreateModal from './ToDoModal/model';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
 import useFilters from './FiltersModal/useFilters';
 import FiltersModal from './FiltersModal/FiltersModal';
@@ -39,6 +39,8 @@ const ToDoList = ({ list }: IToDoList) => {
       return <div>Задач нету, пора что-то придумать!</div>;
     }
   }, [list, actionProcessing]);
+
+  useEffect(() => {}, [isMobile]);
 
   return (
     <>

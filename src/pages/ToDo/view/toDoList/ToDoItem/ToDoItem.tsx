@@ -4,6 +4,7 @@ import cls from './ToDoItem.module.scss';
 import { ITodoResponseConverted } from '@/api/TodoApi/types';
 import { category, priority } from '@/pages/ToDo/view/utils';
 import useToDoModel from './model';
+import { useEffect } from 'react';
 
 const b = block(cls.ToDoItem);
 
@@ -16,6 +17,8 @@ const ToDoItem = ({ item, onClick }: IToDoItem) => {
   const itemPriority = priority[item.priority];
   const itemCategory = category[item.category];
   const isMobile = window.innerWidth < 820;
+
+  useEffect(() => {}, [isMobile]);
 
   return (
     <>
