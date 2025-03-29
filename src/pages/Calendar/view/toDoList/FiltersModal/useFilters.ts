@@ -8,14 +8,6 @@ const useFilters = () => {
   const dispatch = useTypedDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const sortOrder = useTypedSelector(state => state.todos.sortOrder);
-  // const [sortOrder, setSortOrder] = useState<IToDoPayload>({
-  //   priority: null,
-  //   category: null,
-  //   sortBy: null,
-  //   order: null,
-  //   date: null,
-  //   completed: null,
-  // });
 
   const handleOpenFilters = () => setIsOpen(true);
   const handleCloseFilters = () => setIsOpen(false);
@@ -56,10 +48,6 @@ const useFilters = () => {
     dispatch(todosActions.changeSortOrder({ all: true }));
 
   }
-
-  useEffect(() => {
-    dispatch(todosActions.getTodos({ data: sortOrder }));
-  }, [])
 
   return {
     isOpen,

@@ -13,6 +13,7 @@ export type TServerResponseDataInput<TData> = {
   status: number;
   result: TData;
   message?: string;
+  error?: string;
 }
 export type T1xServerResponseDataInput<TData> = TData & { message?: string };
 export type TServerResponseDataOutput<TDataConverted> = {
@@ -20,4 +21,5 @@ export type TServerResponseDataOutput<TDataConverted> = {
   data: TDataConverted | null;
   errorMessage: string;
   codeStatus: number;
+  error: string | null;
 }

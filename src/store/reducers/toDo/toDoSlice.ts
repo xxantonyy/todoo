@@ -25,7 +25,7 @@ const getTodos = createAsyncThunk<
     } else {
       const presistState = persistStore(store);
       await presistState.purge();
-      console.error(`error in ${EToDoActionDataTypes.GET_TODOS}, message: ${response.errorMessage}`);
+      getNotify(`Произошла ошибка при получении задач ${response.error}`, "error", 5000);
     }
 
   }
@@ -51,7 +51,7 @@ const updateTodo = createAsyncThunk<
       if (body.callback) body.callback();
       dispatch(getTodos({ data: thunkAPI.getState().todos.sortOrder }));
     } else {
-      console.error(`error in ${EToDoActionDataTypes.UPDATE_TODO}, message: ${response.errorMessage}`);
+      getNotify(`Произошла ошибка при обновлении задачи ${response.error}`, "error", 5000);
     }
   }
 )
@@ -76,7 +76,7 @@ const createTodo = createAsyncThunk<
       dispatch(getTodos({}));
       if (body.callback) body.callback();
     } else {
-      console.error(`error in ${EToDoActionDataTypes.CREATE_TODO}, message: ${response.errorMessage}`);
+      getNotify(`Произошла ошибка при создании задачи ${response.error}`, "error", 5000);
     }
   }
 )
@@ -101,7 +101,7 @@ const deleteTodo = createAsyncThunk<
       if (body.callback) body.callback();
       dispatch(getTodos({}));
     } else {
-      console.error(`error in ${EToDoActionDataTypes.DELETE_TODO}, message: ${response.errorMessage}`);
+      getNotify(`Произошла ошибка при удалении задачи ${response.error}`, "error", 5000);
     }
   }
 )

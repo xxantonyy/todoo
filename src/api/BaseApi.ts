@@ -51,7 +51,8 @@ const BaseAPI = (
     const resultResponse: TServerResponseDataOutput<TDataConverted> = {
       success,
       data: resultData,
-      errorMessage: data.message ? data.message : '',
+      errorMessage: data.message ? data.message : data.error,
+      error: data.error,
       codeStatus: status,
     };
 
