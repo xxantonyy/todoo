@@ -5,13 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import Button from '@/components/Button/Buttons';
 import { useTheme } from '@/shared/ThemeProvider/ThemeProvider';
 
-import './Header.module.scss';
+import cls from './Header.module.scss';
 import DayPNG from './img/day.png';
 import NightPNG from './img/night.png';
 import LoginModal from './modules/loginModal/LoginModal';
 import { getActiveRoutes } from './utils';
 
-const b = block('Header');
+const b = block(cls.Header);
 
 const Header = () => {
   const navigate = useNavigate();

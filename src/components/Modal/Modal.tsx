@@ -2,9 +2,9 @@ import { block } from 'bem-cn'; // Если используешь bem-cn
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
-import './Modal.module.scss';
+import cls from './Modal.module.scss';
 
-const b = block('Modal');
+const b = block(cls.Modal);
 
 interface IModalProps {
   isOpen: boolean;

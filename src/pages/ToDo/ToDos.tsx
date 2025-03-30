@@ -7,10 +7,10 @@ import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
 import { todosActions } from '@/store/reducers/toDo/toDoSlice';
 
-import './ToDos.module.scss';
+import cls from './ToDos.module.scss';
 import ToDoList from './view/toDoList/ToDoList';
 
-const b = block('toDos');
+const b = block(cls.toDos);
 
 const ToDos = memo(() => {
   const dispatch = useTypedDispatch();

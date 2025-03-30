@@ -1,9 +1,9 @@
 import block from 'bem-cn';
 import { memo } from 'react';
 
-import './Main.module.scss';
+import cls from './Main.module.scss';
 
-const b = block('main');
+const b = block(cls.main);
 
 const Main = memo(() => (
   <div className={b()}>

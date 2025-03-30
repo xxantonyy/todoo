@@ -9,11 +9,11 @@ import { Loading } from '@/widgets/Loading/Loading';
 import FiltersModal from './FiltersModal/FiltersModal';
 import useFilters from './FiltersModal/useFilters';
 import ToDoItem from './ToDoItem/ToDoItem';
-import './ToDoList.module.scss';
+import cls from './ToDoList.module.scss';
 import useCreateModal from './ToDoModal/model';
 import ToDoModal from './ToDoModal/ToDoModal';
 
-const b = block('ToDoList');
+const b = block(cls.ToDoList);
 
 interface IToDoList {
   list: ITodoResponseConverted[];

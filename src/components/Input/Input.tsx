@@ -1,9 +1,9 @@
 import { block } from 'bem-cn';
 import React from 'react';
 
-import './Input.module.scss';
+import cls from './Input.module.scss';
 
-const b = block('Input');
+const b = block(cls.Input);
 
 interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;

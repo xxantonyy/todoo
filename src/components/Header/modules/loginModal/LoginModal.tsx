@@ -6,11 +6,11 @@ import { Modal } from '@/components/Modal/Modal';
 import { Loading } from '@/widgets/Loading/Loading';
 
 import VectorSVG from './img/vector.svg';
-import './LoginModal.module.scss';
+import cls from './LoginModal.module.scss';
 import useAuth from './model/modelAuth';
 import useUsername from './model/modelUsername';
 
-const b = block('LoginModal');
+const b = block(cls.LoginModal);
 
 const LoginModal = () => {
   const model = useAuth();

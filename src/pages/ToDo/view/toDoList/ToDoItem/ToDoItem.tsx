@@ -5,9 +5,9 @@ import { ITodoResponseConverted } from '@/api/TodoApi/types';
 import { category, priority } from '@/pages/ToDo/view/utils';
 
 import useToDoModel from './model';
-import './ToDoItem.module.scss';
+import cls from './ToDoItem.module.scss';
 
-const b = block('ToDoItem');
+const b = block(cls.ToDoItem);
 
 interface IToDoItem {
   item: ITodoResponseConverted;
