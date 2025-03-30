@@ -12,7 +12,7 @@ import { Loading } from '@/widgets/Loading/Loading';
 import Header from '../Header/Header';
 import Notify from '../Notify/Notify';
 
-import './App.module.scss';
+import cls from './App.module.scss';
 import '@/assets/styles.scss';
 
 export const App = () => (
@@ -20,10 +20,10 @@ export const App = () => (
     <PersistGate loading={null} persistor={persistor}>
       <ThemeProvider>
         <Notify />
-        <div className={classNames('container', {}, [])}>
+        <div className={classNames(cls.container, {}, [])}>
           <BrowserRouter>
             <Header />
-            <div className={classNames('content', {}, [])}>
+            <div className={classNames(cls.content, {}, [])}>
               <Suspense fallback={<Loading />}>
                 <AppRouter />
               </Suspense>
