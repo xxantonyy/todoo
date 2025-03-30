@@ -34,7 +34,7 @@ export default defineConfig(({ mode }) => {
     },
     css: {
       modules: {
-        generateScopedName: '[local]',
+        generateScopedName: '[local]__[hash:base64:5]', // ❗ в проде нужны хэши
       },
     },
     server: {
