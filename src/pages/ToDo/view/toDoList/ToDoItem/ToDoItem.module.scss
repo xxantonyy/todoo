@@ -49,8 +49,9 @@
     overflow: hidden;
     white-space: nowrap;
     text-wrap: auto;
-  }
-  
+    display: flex;
+    align-items: center;
+  }  
 
   &__status {
     cursor: pointer;

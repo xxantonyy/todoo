@@ -74,13 +74,13 @@ const useCreateModal = () => {
     setIsPatch(false);
   };
 
-  const handlePatchTask = (e: React.FormEvent<HTMLFormElement>) => {
+  const handlePatchTask = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     dispatch(todosActions.updateTodo({ item: taskState, callback: () => setIsOpen(false) }));
   };
 
   const handleDeleteTask = (
-    e: React.FormEvent<HTMLFormElement>,
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     id: string,
   ) => {
     e.preventDefault();
