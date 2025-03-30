@@ -33,7 +33,7 @@ const ToDoItem = ({ item, onClick }: IToDoItem) => {
             {item.completed ? 'Выполнено' : 'Не выполнено'}
           </div>
           <div className={b('priority')}>
-            <img src={itemPriority.img} alt="" />
+            <itemPriority.img />
           </div>
           <div className={b('label')}>{itemCategory.label}</div>
           <div className={b('date')}>
@@ -67,7 +67,7 @@ const ToDoItem = ({ item, onClick }: IToDoItem) => {
           <div className={b('priority')}>
             <div className={b('left')}>Приоритет</div>
             <div className={b('right')}>
-              <img src={itemPriority.img} alt="" />
+              <itemPriority.img />
             </div>
           </div>
           <div className={b('label')}>

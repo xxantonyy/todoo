@@ -1,6 +1,6 @@
-import priority1SVG from './img/priority_1.svg';
-import priority2SVG from './img/priority_2.svg';
-import priority3SVG from './img/priority_3.svg';
+import priority1SVG from './img/priority_1.svg?react';
+import priority2SVG from './img/priority_2.svg?react';
+import priority3SVG from './img/priority_3.svg?react';
 import { ICategoryOptions, IPriorityOptions } from './types';
 
 const priority: Record<number, IPriorityOptions> = {
