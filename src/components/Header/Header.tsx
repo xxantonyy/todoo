@@ -66,17 +66,14 @@ const Header = () => {
 
       {/* mobile */}
       {isMobile && (
-        <div>
-          <div className={b('Header-mobile')}>
-            <div className={b('Header-mobile__content')}>
-              <div className={b('left-block')}>To do app</div>
-              <LoginModal />
-              <div onClick={() => setBurgerOpen(!burgerOpen)}>
-                <div>Меню</div>
-              </div>
+        <div className={b('Header-mobile')}>
+          <div className={b('Header-mobile__content')}>
+            <div className={b('left-block')}>To do app</div>
+            <LoginModal />
+            <div onClick={() => setBurgerOpen(!burgerOpen)}>
+              <div>Меню</div>
             </div>
           </div>
-
           <div
             className={b('burger', { open: burgerOpen, close: !burgerOpen })}
             onClick={() => setBurgerOpen(!burgerOpen)}
