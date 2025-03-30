@@ -29,9 +29,10 @@ export const Modal: React.FC<IModalProps> = ({ isOpen, onClose, children }) => {
   const content = (
     <div
       className={b({ open: isOpen })}
-      onClick={(e) => {
-        e.stopPropagation();
-        onClose();
+      onMouseDown={(e) => {
+        if (e.target === e.currentTarget) {
+          onClose();
+        }
       }}
     >
       <div className={b('content')} onClick={(e) => e.stopPropagation()}>
