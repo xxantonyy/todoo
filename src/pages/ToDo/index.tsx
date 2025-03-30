@@ -1,1 +1,1 @@
-export { LazyToDos as ToDos } from './ToDos.lazy'
+export { LazyToDos as ToDos } from './ToDos.lazy';

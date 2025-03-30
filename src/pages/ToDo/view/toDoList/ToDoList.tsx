@@ -1,18 +1,19 @@
 import block from 'bem-cn';
-import { ITodoResponseConverted } from '@/api/TodoApi/types';
-
-import cls from './ToDoList.module.scss';
-import ToDoItem from './ToDoItem/ToDoItem';
-import Button from '@/components/Button/Buttons';
-import ToDoModal from './ToDoModal/ToDoModal';
-import useCreateModal from './ToDoModal/model';
 import { useEffect, useMemo } from 'react';
+
+import { ITodoResponseConverted } from '@/api/TodoApi/types';
+import Button from '@/components/Button/Buttons';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
-import useFilters from './FiltersModal/useFilters';
-import FiltersModal from './FiltersModal/FiltersModal';
 import { Loading } from '@/widgets/Loading/Loading';
 
-const b = block(cls.ToDoList);
+import FiltersModal from './FiltersModal/FiltersModal';
+import useFilters from './FiltersModal/useFilters';
+import ToDoItem from './ToDoItem/ToDoItem';
+import './ToDoList.module.scss';
+import useCreateModal from './ToDoModal/model';
+import ToDoModal from './ToDoModal/ToDoModal';
+
+const b = block('ToDoList');
 
 interface IToDoList {
   list: ITodoResponseConverted[];
@@ -23,9 +24,10 @@ const ToDoList = ({ list }: IToDoList) => {
   const filters = useFilters();
   const isMobile = window.innerWidth < 820;
   const actionProcessing = useTypedSelector(
-    (state) => state.todos.actionProcessing
+    (state) => state.todos.actionProcessing,
   );
 
+  // eslint-disable-next-line consistent-return
   const items = useMemo(() => {
     if (list?.length > 0) {
       return list?.map((item) => (
@@ -35,17 +37,18 @@ const ToDoList = ({ list }: IToDoList) => {
           onClick={() => model.handleClickOnTask(item)}
         />
       ));
-    } else if (!actionProcessing) {
+    }
+    if (!actionProcessing) {
       return <div>Задач нету, пора что-то придумать!</div>;
     }
-  }, [list, actionProcessing]);
+  }, [list, model, actionProcessing]);
 
   useEffect(() => {}, [isMobile]);
 
   return (
     <>
-    {actionProcessing ? <Loading /> : ''}
-    
+      {actionProcessing ? <Loading /> : ''}
+
       {!isMobile && (
         <div className={b()}>
           <div className={b('header')}>

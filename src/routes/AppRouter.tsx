@@ -1,7 +1,9 @@
 import { memo } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { privateRoutes, publicRoutes } from './routrer';
+
 import { useTypedSelector } from '@/hooks/useTypedSelector';
+
+import { privateRoutes, publicRoutes } from './routrer';
 
 export const AppRouter = memo(() => {
   const { auth } = useTypedSelector((state) => state.auth);

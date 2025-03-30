@@ -5,5 +5,5 @@ export const persistState: (arg: string[]) => StoreEnhancer<
   {
     dispatch: unknown;
   },
-  {}
+  object
 >;

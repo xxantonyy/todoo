@@ -1,9 +1,10 @@
+import { block } from 'bem-cn'; // Если используешь bem-cn
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import cls from './Modal.module.scss';
-import { block } from 'bem-cn'; // Если используешь bem-cn
 
-const b = block(cls.Modal);
+import './Modal.module.scss';
+
+const b = block('Modal');
 
 interface IModalProps {
   isOpen: boolean;
@@ -35,7 +36,7 @@ export const Modal: React.FC<IModalProps> = ({ isOpen, onClose, children }) => {
     >
       <div className={b('content')} onClick={(e) => e.stopPropagation()}>
         {children}
-        <button className={b('close')} onClick={onClose}>
+        <button className={b('close')} onClick={onClose} type="button">
           ✖
         </button>
       </div>
@@ -44,6 +45,6 @@ export const Modal: React.FC<IModalProps> = ({ isOpen, onClose, children }) => {
 
   return ReactDOM.createPortal(
     content,
-    document.getElementById('modal-root') as HTMLElement
+    document.getElementById('modal-root') as HTMLElement,
   );
 };

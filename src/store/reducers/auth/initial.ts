@@ -5,6 +5,6 @@ const initialState: IAuthState = {
   username: null,
   actionProcessing: false,
   auth: false,
-}
+};
 
 export default initialState;

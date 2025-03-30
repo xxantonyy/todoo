@@ -33,7 +33,7 @@ export const categories = [
   {
     label: 'Другое',
     value: 2,
-  }
+  },
 ];
 
 export const order = [
@@ -48,7 +48,7 @@ export const order = [
   {
     label: 'Убыванию',
     value: 'desc',
-  }
+  },
 ];
 
 export const sortBy = [
@@ -71,5 +71,5 @@ export const sortBy = [
   {
     label: 'Дата',
     value: 'date',
-  }
+  },
 ];

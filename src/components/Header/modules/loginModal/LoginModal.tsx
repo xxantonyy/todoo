@@ -1,16 +1,16 @@
-import Button from '@/components/Button/Buttons';
-import { Modal } from '@/components/Modal/Modal';
 import block from 'bem-cn';
 
-import cls from './LoginModal.module.scss';
+import Button from '@/components/Button/Buttons';
 import { Input } from '@/components/Input/Input';
-import useAuth from './model/modelAuth';
-import useUsername from './model/modelUsername';
+import { Modal } from '@/components/Modal/Modal';
 import { Loading } from '@/widgets/Loading/Loading';
 
 import VectorSVG from './img/vector.svg';
+import './LoginModal.module.scss';
+import useAuth from './model/modelAuth';
+import useUsername from './model/modelUsername';
 
-const b = block(cls.LoginModal);
+const b = block('LoginModal');
 
 const LoginModal = () => {
   const model = useAuth();
@@ -38,7 +38,7 @@ const LoginModal = () => {
         />
       </div>
       <div className={b('submit')}>
-        <Button type="submit">Войти</Button>
+        <Button disabled={model.disabled} className={b({ disabled: model.disabled })} type="submit">Войти</Button>
       </div>
     </form>
   );
@@ -49,7 +49,7 @@ const LoginModal = () => {
         <div className={b('username')} onClick={modelUsername.openUsernameMenu}>
           <div>{modelUsername.username}</div>
           <div className={b('username__menu-button', { open: modelUsername.open })}>
-            <VectorSVG />
+            <img src={VectorSVG} alt="" />
           </div>
 
           <div className={b('username__list', { open: modelUsername.open })}>

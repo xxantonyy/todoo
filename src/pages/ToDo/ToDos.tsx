@@ -1,19 +1,16 @@
-import { memo, useEffect } from 'react';
-
 import block from 'bem-cn';
+import { memo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { todosActions } from '@/store/reducers/toDo/toDoSlice';
-
+import { getNotify } from '@/components/Notify/Notify';
 import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
+import { todosActions } from '@/store/reducers/toDo/toDoSlice';
 
-import { getNotify } from '@/components/Notify/Notify';
-
+import './ToDos.module.scss';
 import ToDoList from './view/toDoList/ToDoList';
-import cls from './ToDos.module.scss';
 
-const b = block(cls.toDos);
+const b = block('toDos');
 
 const ToDos = memo(() => {
   const dispatch = useTypedDispatch();
@@ -28,9 +25,8 @@ const ToDos = memo(() => {
       return;
     }
 
-    dispatch(
-      todosActions.getTodos({ data: { }})
-    );
+    dispatch(todosActions.getTodos({ data: {} }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

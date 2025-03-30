@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
-import { categories, priorities } from "./utils";
-import { useTypedDispatch } from "@/hooks/useTypedDispatch";
+import { useState } from 'react';
+
+import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 import { todosActions } from '@/store/reducers/toDo/toDoSlice';
-import { priority } from "../../utils";
-import { IToDoPayload } from "@/store/reducers/toDo/types";
 
 interface ITask {
   id: string,
@@ -28,7 +26,7 @@ const useCreateModal = () => {
     priority: null,
   });
 
-  const handleChangeTask = (value: any, key: keyof ITask) => {
+  const handleChangeTask = (value: unknown, key: keyof ITask) => {
     switch (key) {
       case 'category':
         setTaskState({ ...taskState, category: Number(value) });
@@ -37,52 +35,57 @@ const useCreateModal = () => {
         setTaskState({ ...taskState, priority: Number(value) });
         break;
       case 'completed':
-        setTaskState({ ...taskState, completed: value });
+        setTaskState({ ...taskState, completed: Boolean(value) });
         break;
       case 'title':
-        setTaskState({ ...taskState, title: value });
+        setTaskState({ ...taskState, title: value as string });
         break;
       case 'description':
-        setTaskState({ ...taskState, description: value });
+        setTaskState({ ...taskState, description: value as string });
         break;
       default: break;
     }
-  }
+  };
 
   const handleOpenCreateTask = () => {
-    setTaskState({ title: '', description: '', completed: false, category: 0, priority: 0, id: '' });
+    setTaskState({
+      title: '', description: '', completed: false, category: 0, priority: 0, id: '',
+    });
     setIsCreateTask(true);
     setIsOpen(true);
   };
 
-  const handleCreateTask = (e: any) => {
+  const handleCreateTask = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(todosActions.createTodo({ item: taskState, callback: () => { setIsOpen(false); setIsCreateTask(false) } }));
-  }
+    dispatch(todosActions.createTodo({ item: taskState, callback: () => { setIsOpen(false); setIsCreateTask(false); } }));
+  };
 
   const handleClickOnTask = (task: ITask) => {
     setTaskState({
       ...task,
     });
     setIsPatch(true);
-    setIsOpen(true)
+    setIsOpen(true);
   };
 
   const handleCloseModal = () => {
     setIsCreateTask(false);
     setIsOpen(false);
     setIsPatch(false);
-  }
+  };
 
-  const handlePatchTask = (e: any) => {
+  const handlePatchTask = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(todosActions.updateTodo({ item: taskState, callback: () => setIsOpen(false) }));
-  }
+  };
 
-  const handleDeleteTask = (e: any, id: string) => {
+  const handleDeleteTask = (
+    e: React.FormEvent<HTMLFormElement>,
+    id: string,
+  ) => {
     e.preventDefault();
     dispatch(todosActions.deleteTodo({ id, callback: handleCloseModal }));
-  }
+  };
 
   return {
     taskState,
@@ -98,6 +101,6 @@ const useCreateModal = () => {
     handlePatchTask,
     handleOpenCreateTask,
   };
-}
+};
 
 export default useCreateModal;

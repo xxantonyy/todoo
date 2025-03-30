@@ -1,9 +1,11 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import initialState from "./initial";
-import { TAppThunkAPI } from "@/store/types";
-import { EAuthActionDataTypes } from "./types";
-import { IAuthApi } from "@/api/AuthApi/types";
-import { getNotify } from "@/components/Notify/Notify";
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
+import { IAuthApi } from '@/api/AuthApi/types';
+import { getNotify } from '@/components/Notify/Notify';
+import { TAppThunkAPI } from '@/store/types';
+
+import initialState from './initial';
+import { EAuthActionDataTypes } from './types';
 
 const getAuth = createAsyncThunk<
   {
@@ -14,7 +16,8 @@ const getAuth = createAsyncThunk<
   {
     username: string,
     password: string,
-    callback?: () => void
+    callback?:(
+    ) => void
   },
   TAppThunkAPI
 >(
@@ -33,14 +36,19 @@ const getAuth = createAsyncThunk<
         token: response.data.token,
         username: response.data.username,
         auth: true,
-      }
-    } else {
-      console.error(`error in ${EAuthActionDataTypes.AUTH}, message: ${response.errorMessage}`);
+      };
     }
+    console.error(`error in ${EAuthActionDataTypes.AUTH}, message: ${response.errorMessage}`);
 
     getNotify(response.errorMessage, 'error');
     state.auth.actionProcessing = false;
-  }
+
+    return {
+      token: null,
+      username: null,
+      auth: false,
+    };
+  },
 );
 
 export const authSlice = createSlice({
@@ -52,7 +60,7 @@ export const authSlice = createSlice({
       state.username = null;
       state.actionProcessing = false;
       state.auth = false;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getAuth.fulfilled, (state, action: PayloadAction<IAuthApi>) => {
@@ -60,13 +68,13 @@ export const authSlice = createSlice({
       state.username = action.payload?.username || null;
       state.actionProcessing = false;
       state.auth = action.payload?.auth;
-    })
+    });
   },
 });
 
 const actions = {
   getAuth,
-}
+};
 
-export const authActions = { ...authSlice.actions, ...actions }
+export const authActions = { ...authSlice.actions, ...actions };
 export default authSlice.reducer;

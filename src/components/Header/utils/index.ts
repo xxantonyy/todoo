@@ -1,4 +1,5 @@
-import { useTypedSelector } from "@/hooks/useTypedSelector";
+/* eslint-disable react-hooks/rules-of-hooks */
+import { useTypedSelector } from '@/hooks/useTypedSelector';
 
 export const headerRoutes = [
   {

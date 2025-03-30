@@ -1,12 +1,14 @@
-import { Input } from '@/components/Input/Input';
-import { Modal } from '@/components/Modal/Modal';
 import block from 'bem-cn';
 
 import Button from '@/components/Button/Buttons';
-import { categories, order, priorities, sortBy } from './utils';
+import { Input } from '@/components/Input/Input';
+import { Modal } from '@/components/Modal/Modal';
 
 import cls from './FiltersModal.module.scss';
 import useFilters from './useFilters';
+import {
+  categories, order, priorities, sortBy,
+} from './utils';
 
 interface IFiltersModal {
   model: ReturnType<typeof useFilters>;
@@ -28,9 +30,7 @@ const FiltersModal = ({ model }: IFiltersModal) => {
             type="select"
             value={model.sortOrder.priority || null}
             options={priorities}
-            onChange={(e) =>
-              model.handleChangeFilters(e.target.value, 'priority')
-            }
+            onChange={(e) => model.handleChangeFilters(e.target.value, 'priority')}
           />
         </div>
         <div className={b('input')}>
@@ -40,9 +40,7 @@ const FiltersModal = ({ model }: IFiltersModal) => {
             type="select"
             value={model.sortOrder.category || null}
             options={categories}
-            onChange={(e) =>
-              model.handleChangeFilters(e.target.value, 'category')
-            }
+            onChange={(e) => model.handleChangeFilters(e.target.value, 'category')}
           />
         </div>
         <div className={b('input')}>
@@ -52,9 +50,7 @@ const FiltersModal = ({ model }: IFiltersModal) => {
             type="select"
             value={model.sortOrder.sortBy || null}
             options={sortBy}
-            onChange={(e) =>
-              model.handleChangeFilters(e.target.value, 'sortBy')
-            }
+            onChange={(e) => model.handleChangeFilters(e.target.value, 'sortBy')}
           />
         </div>
         <div className={b('input', 'last')}>

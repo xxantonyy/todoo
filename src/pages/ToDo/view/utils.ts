@@ -1,25 +1,25 @@
-import { ICategoryOptions, IPriorityOptions } from "./types";
-import priority_1_SVG from './img/priority_1.svg';
-import priority_2_SVG from './img/priority_2.svg';
-import priority_3_SVG from './img/priority_3.svg';
+import priority1SVG from './img/priority_1.svg';
+import priority2SVG from './img/priority_2.svg';
+import priority3SVG from './img/priority_3.svg';
+import { ICategoryOptions, IPriorityOptions } from './types';
 
 const priority: Record<number, IPriorityOptions> = {
   0: {
     label: 'Низкий',
     value: 'low',
-    img: priority_1_SVG,
+    img: priority1SVG,
   },
   1: {
     label: 'Средний',
     value: 'medium',
-    img: priority_2_SVG,
+    img: priority2SVG,
   },
   2: {
     label: 'Высокий',
     value: 'high',
-    img: priority_3_SVG,
+    img: priority3SVG,
   },
-}
+};
 const category: Record<number, ICategoryOptions> = {
   0: {
     label: 'Работа',
@@ -38,4 +38,4 @@ const category: Record<number, ICategoryOptions> = {
   },
 };
 
-export { priority, category }
+export { priority, category };

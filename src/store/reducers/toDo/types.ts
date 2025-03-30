@@ -1,5 +1,5 @@
+import { ITodoResponseConverted } from '@/api/TodoApi/types';
 import { IAction, IActionData } from '@/store/types';
-import { ITodoResponseConverted } from "@/api/TodoApi/types";
 
 export enum EToDoActionDataTypes {
   GET_TODOS = 'todos/GET_TODOS',
@@ -8,19 +8,19 @@ export enum EToDoActionDataTypes {
   DELETE_TODO = 'todos/DELETE_TODO',
 }
 
-export interface IToDoState {
-  actionProcessing: boolean;
-  todos: ITodoResponseConverted[];
-  sortOrder: IToDoPayload;
-}
-
 export interface IToDoPayload {
   priority?: number | null,
   category?: number | null,
   sortBy?: 'priority' | 'category' | 'date' | 'completed' | null,
-  order?: 'desc' | 'asc'| null,
-  date?: string| null,
+  order?: 'desc' | 'asc' | null,
+  date?: string | null,
   completed?: number | null,
+}
+
+export interface IToDoState {
+  actionProcessing: boolean;
+  todos: ITodoResponseConverted[];
+  sortOrder: IToDoPayload;
 }
 
 export type TToDoPagesPayload = {

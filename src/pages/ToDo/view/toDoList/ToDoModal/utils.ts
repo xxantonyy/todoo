@@ -25,5 +25,5 @@ export const categories = [
   {
     label: 'Другое',
     value: 2,
-  }
+  },
 ];

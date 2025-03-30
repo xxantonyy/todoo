@@ -1,8 +1,9 @@
-import React from 'react';
-import cls from './Input.module.scss';
 import { block } from 'bem-cn';
+import React from 'react';
 
-const b = block(cls.Input);
+import './Input.module.scss';
+
+const b = block('Input');
 
 interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
@@ -94,6 +95,19 @@ export const Input: React.FC<IInputProps> = ({
           </div>
         </>
       );
+
+    default:
+      return (
+        <>
+          {title && <span className={b('title')}>{title}</span>}
+          <div className={b(null, className, {})}>
+            <div className={b('wrapper')}>
+              {icon && <span className={b('icon')}>{icon}</span>}
+              {renderInput()}
+            </div>
+          </div>
+        </>
+      );
   }
 };
 
@@ -102,19 +116,17 @@ export const Textarea: React.FC<ITextareaProps> = ({
   icon,
   title,
   ...props
-}) => {
-  return (
-    <div className={b(null, className)}>
-      {title && <span className={b('title')}>{title}</span>}
-      <div className={b('wrapper')}>
-        {icon && <span className={b('icon')}>{icon}</span>}
-        <textarea
-          className={b('field')}
-          style={{ resize: 'none' }}
-          rows={5}
-          {...props}
-        />
-      </div>
+}) => (
+  <div className={b(null, className)}>
+    {title && <span className={b('title')}>{title}</span>}
+    <div className={b('wrapper')}>
+      {icon && <span className={b('icon')}>{icon}</span>}
+      <textarea
+        className={b('field')}
+        style={{ resize: 'none' }}
+        rows={5}
+        {...props}
+      />
     </div>
-  );
-};
+  </div>
+);

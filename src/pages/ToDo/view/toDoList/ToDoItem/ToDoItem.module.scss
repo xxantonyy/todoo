@@ -19,6 +19,11 @@
   // }
 
   &__priority{
+    object-fit: cover;
+    img {
+      height: 1rem;
+      width: 1rem;
+    }
   }
 
   .stroke-background {
@@ -85,6 +90,13 @@
       display: grid;
       grid-template-columns: 6rem 1fr;
       align-items: center;
+    }
+
+    &__priority {
+      img {
+        height: 0.9rem;
+        width: 1rem;
+      }
     }
 
 

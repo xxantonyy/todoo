@@ -1,17 +1,17 @@
-import { useTheme } from '@/shared/ThemeProvider/ThemeProvider';
-import Button from '@/components/Button/Buttons';
-import { useNavigate } from 'react-router-dom';
-import { useEffect, useMemo, useState } from 'react';
-import { getActiveRoutes } from './utils';
-import LoginModal from './modules/loginModal/LoginModal';
-
-import cls from './Header.module.scss';
 import block from 'bem-cn';
+import { useEffect, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
+import Button from '@/components/Button/Buttons';
+import { useTheme } from '@/shared/ThemeProvider/ThemeProvider';
+
+import './Header.module.scss';
 import DayPNG from './img/day.png';
 import NightPNG from './img/night.png';
+import LoginModal from './modules/loginModal/LoginModal';
+import { getActiveRoutes } from './utils';
 
-const b = block(cls.Header);
+const b = block('Header');
 
 const Header = () => {
   const navigate = useNavigate();
@@ -21,21 +21,21 @@ const Header = () => {
   const isMobile = window.innerWidth < 820;
 
   const allRoutes = useMemo(
-    () =>
-      routes.map((route) => (
-        <Button
-          className={route.active ? 'active' : ''}
-          key={route.path}
-          onClick={() => {
+    () => routes.map((route) => (
+      <Button
+        className={route.active ? 'active' : ''}
+        key={route.path}
+        onClick={() => {
             navigate(route.path);
             setBurgerOpen(!burgerOpen);
           }}
-          type="button"
-        >
-          {route.name}
-        </Button>
+        type="button"
+      >
+        {route.name}
+      </Button>
       )),
-    [routes]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [routes],
   );
 
   useEffect(() => {}, [isMobile]);
@@ -45,7 +45,7 @@ const Header = () => {
       {!isMobile && (
         <div className={b()}>
           <div className={b('left-block')}>To do app</div>
-          <div className={b('center-block')}></div>
+          <div className={b('center-block')} />
           <div className={b('right-block')}>
             <div className={b('theme')} onClick={toggleTheme}>
               {theme === 'light' ? (

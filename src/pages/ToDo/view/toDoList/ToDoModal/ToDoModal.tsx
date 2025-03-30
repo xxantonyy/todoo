@@ -1,12 +1,11 @@
-import { Input, Textarea } from '@/components/Input/Input';
-import { Modal } from '@/components/Modal/Modal';
 import block from 'bem-cn';
 
-import cls from './ToDoModal.module.scss';
-import { getNotify } from '@/components/Notify/Notify';
-import { useEffect } from 'react';
 import Button from '@/components/Button/Buttons';
+import { Input, Textarea } from '@/components/Input/Input';
+import { Modal } from '@/components/Modal/Modal';
+
 import useCreateModal from './model';
+import cls from './ToDoModal.module.scss';
 import { categories, priorities } from './utils';
 
 interface IToDoModal {
@@ -31,12 +30,10 @@ const ToDoModal = ({ model }: IToDoModal) => {
         </div>
         <div className={b('textarea')}>
           <Textarea
-            className={'textarea'}
+            className="textarea"
             placeholder="Описание"
             value={model.taskState.description}
-            onChange={(e) =>
-              model.handleChangeTask(e.target.value, 'description')
-            }
+            onChange={(e) => model.handleChangeTask(e.target.value, 'description')}
           />
         </div>
         {/* <div className={b('input')}>
@@ -56,7 +53,7 @@ const ToDoModal = ({ model }: IToDoModal) => {
           <Input
             placeholder="Приоритет"
             type="select"
-            value={model.taskState.priority || ""}
+            value={model.taskState.priority || ''}
             options={priorities}
             onChange={(e) => model.handleChangeTask(e.target.value, 'priority')}
           />
@@ -65,7 +62,7 @@ const ToDoModal = ({ model }: IToDoModal) => {
           <Input
             placeholder="Категория"
             type="select"
-            value={model.taskState.category || ""}
+            value={model.taskState.category || ''}
             options={categories}
             onChange={(e) => model.handleChangeTask(e.target.value, 'category')}
           />

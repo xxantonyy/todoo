@@ -1,9 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
-import todosReducer from '@/store/reducers/toDo/toDoSlice';
-import authReducer from '@/store/reducers/auth/authSlice';
 import storage from 'redux-persist/lib/storage'; // Использует localStorage по умолчанию
+
 import Api from '@/api/Api';
+import authReducer from '@/store/reducers/auth/authSlice';
+import todosReducer from '@/store/reducers/toDo/toDoSlice';
 
 const persistConfig = {
   key: 'root', // Ключ для хранилища
@@ -23,13 +24,12 @@ const persistedReducer = persistReducer<ReturnType<typeof rootReducer>>(persistC
 
 const store = configureStore({
   reducer: persistedReducer,
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
-      thunk: {
-        extraArgument: { api },
-      },
-      serializableCheck: false,
-    }),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    thunk: {
+      extraArgument: { api },
+    },
+    serializableCheck: false,
+  }),
 
 });
 

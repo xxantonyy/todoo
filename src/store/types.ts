@@ -1,4 +1,5 @@
 import { ThunkAction } from 'redux-thunk';
+
 import { api, rootReducer, store } from './store';
 
 export type RootState = ReturnType<typeof rootReducer>;
@@ -15,7 +16,7 @@ export type IAppThunk<TDataType extends string, TPayload, ReturnType = void> = T
   ReturnType,
   RootState,
   { api: TApi }/* unknown */,
-  IActionData<TDataType, TPayload>  /* AnyAction */
+  IActionData<TDataType, TPayload> /* AnyAction */
 >;
 
 export type TAppThunkAPI = {
@@ -24,6 +25,5 @@ export type TAppThunkAPI = {
   },
   state: RootState,
 }
-
 
 export type IAction<TDataType extends string, TPayload, TActionArgs> = (args: TActionArgs) => IAppThunk<TDataType, TPayload>;

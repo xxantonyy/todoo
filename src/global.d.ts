@@ -1,14 +1,17 @@
+import { StoreEnhancer } from 'redux';
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 interface Window {
     __REDUX_DEVTOOLS_EXTENSION__: (args: { trace: boolean }) => StoreEnhancer<
       {
         dispatch: unknown;
       },
-      {}
+      object
     >;
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?(): any;
     __data: any; // initial redux state, maybe undefined
   }
-  
+
 declare module '*.module.scss' {
     interface IClassNames {
         [className: string]: string
@@ -28,10 +31,8 @@ declare module '*.png';
 declare module '*.jpg';
 declare module '*.jpeg';
 declare module '*.svg' {
-    import React from 'react';
-
-    const SVG: React.VFC<React.SVGProps<SVGSVGElement>>;
-    export default SVG;
+  const content: React.FC<React.SVGProps<SVGElement>>;
+  export default content;
 }
 
 declare const __PLATFORM__: 'mobile' | 'desktop';

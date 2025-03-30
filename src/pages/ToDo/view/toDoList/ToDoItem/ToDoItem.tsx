@@ -1,12 +1,13 @@
 import block from 'bem-cn';
-
-import cls from './ToDoItem.module.scss';
-import { ITodoResponseConverted } from '@/api/TodoApi/types';
-import { category, priority } from '@/pages/ToDo/view/utils';
-import useToDoModel from './model';
 import { useEffect } from 'react';
 
-const b = block(cls.ToDoItem);
+import { ITodoResponseConverted } from '@/api/TodoApi/types';
+import { category, priority } from '@/pages/ToDo/view/utils';
+
+import useToDoModel from './model';
+import './ToDoItem.module.scss';
+
+const b = block('ToDoItem');
 
 interface IToDoItem {
   item: ITodoResponseConverted;
@@ -32,7 +33,7 @@ const ToDoItem = ({ item, onClick }: IToDoItem) => {
             {item.completed ? 'Выполнено' : 'Не выполнено'}
           </div>
           <div className={b('priority')}>
-            <itemPriority.img />
+            <img src={itemPriority.img} alt="" />
           </div>
           <div className={b('label')}>{itemCategory.label}</div>
           <div className={b('date')}>
@@ -66,7 +67,7 @@ const ToDoItem = ({ item, onClick }: IToDoItem) => {
           <div className={b('priority')}>
             <div className={b('left')}>Приоритет</div>
             <div className={b('right')}>
-              <itemPriority.img />
+              <img src={itemPriority.img} alt="" />
             </div>
           </div>
           <div className={b('label')}>

@@ -1,9 +1,7 @@
-import { VFC, SVGProps } from "react";
-
 export interface IPriorityOptions {
   label: string;
   value: string;
-  img: VFC<SVGProps<SVGSVGElement>>;
+  img: string;
 }
 export interface ICategoryOptions {
   label: string;

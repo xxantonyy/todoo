@@ -2,16 +2,17 @@ import { Suspense } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
+
 import { AppRouter } from '@/routes/AppRouter';
-import { Loading } from '@/widgets/Loading/Loading';
-import { store, persistor } from '@/store/store';
 import { classNames } from '@/shared/classNames/classNames';
 import { ThemeProvider } from '@/shared/ThemeProvider/ThemeProvider';
+import { persistor, store } from '@/store/store';
+import { Loading } from '@/widgets/Loading/Loading';
 
 import Header from '../Header/Header';
 import Notify from '../Notify/Notify';
 
-import cls from './App.module.scss';
+import './App.module.scss';
 import '@/assets/styles.scss';
 
 export const App = () => (
@@ -19,10 +20,10 @@ export const App = () => (
     <PersistGate loading={null} persistor={persistor}>
       <ThemeProvider>
         <Notify />
-        <div className={classNames(cls.container, {}, [])}>
+        <div className={classNames('container', {}, [])}>
           <BrowserRouter>
             <Header />
-            <div className={classNames(cls.content, {}, [])}>
+            <div className={classNames('content', {}, [])}>
               <Suspense fallback={<Loading />}>
                 <AppRouter />
               </Suspense>
