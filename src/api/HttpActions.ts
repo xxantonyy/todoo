@@ -41,11 +41,14 @@ const HttpActions = (baseUrl: string) => {
       options: AxiosRequestConfig = {},
     ): Promise<AxiosResponse<TResponse>> => request.put(url, data, options);
 
-  const del = <TResponse>
-    (
-      url: string,
-      options: AxiosRequestConfig = {},
-    ): Promise<AxiosResponse<TResponse>> => request.delete(url, options);
+  const del = <TResponse>(
+    url: string,
+    params?: any,
+    options: AxiosRequestConfig = {},
+  ): Promise<AxiosResponse<TResponse>> => request.delete(url, {
+      ...options,
+      data: params?.body,
+    });
 
   return {
     get, post, patch, put, del,

@@ -65,18 +65,21 @@ const TodoApi = () => {
     converterSuccess: (data) => converter.convertToDo(data),
   });
 
-  const deleteTask = (body: IDeleteTaskPayload, authToken: string) => api.sendQuery<object, object>({
-    type: EQueryTypes.DELETE,
-    url: `/todos/${body.todoId}`,
-    params: {
-      ...body,
-    },
-    options: {
-      headers: {
-        Authorization: `Bearer ${authToken}`,
-      },
-    },
-  });
+  const deleteTask = (body: IDeleteTaskPayload, authToken: string) => {
+    console.log(body, authToken);
+    return (
+      api.sendQuery<object, object>({
+        type: EQueryTypes.DELETE,
+        url: `/todos/${body.todoId}`,
+        params: { body },
+        options: {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        },
+      })
+    );
+  };
 
   return {
     getTodos,

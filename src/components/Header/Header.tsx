@@ -41,7 +41,7 @@ const Header = () => {
   useEffect(() => {}, [isMobile]);
 
   return (
-    <div>
+    <>
       {!isMobile && (
         <div className={b()}>
           <div className={b('left-block')}>To do app</div>
@@ -113,7 +113,7 @@ const Header = () => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

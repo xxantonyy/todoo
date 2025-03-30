@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
-import './Notify.module.scss';
+
+import cls from './Notify.module.scss';
 
 type NotifyType = 'success' | 'default' | 'error';
 
@@ -46,7 +47,10 @@ const Notify = () => {
     ]);
 
     setTimeout(() => {
-      document.getElementById(`notify-${id}`)?.classList.add('notify--hide');
+      const el = document.getElementById(`notify-${id}`);
+      if (el) {
+        el.classList.add(cls['notify--hide']);
+      }
 
       setTimeout(() => {
         setNotifications((prev) => prev.filter((n) => n.id !== id));
@@ -59,30 +63,32 @@ const Notify = () => {
   };
 
   return ReactDOM.createPortal(
-    <div className="notify-container">
-      {notifications.map((notification) => (
-        <div
-          key={notification.id}
-          id={`notify-${notification.id}`}
-          className={`notify notify--show ${notification.special ? 'notify--special' : ''}`}
-          onClick={() => handleClick(notification.id)}
-        >
-          {`${NotifyType[notification.type]} ${notification.text}`}
-        </div>
-      ))}
+    <div className={cls['notify-container']}>
+      {notifications.map((notification) => {
+        const classNames = [
+          cls.notify,
+          cls['notify--show'],
+          notification.special ? cls['notify--special'] : '',
+        ]
+          .filter(Boolean)
+          .join(' ');
+
+        return (
+          <div
+            key={notification.id}
+            id={`notify-${notification.id}`}
+            className={classNames}
+            onClick={() => handleClick(notification.id)}
+          >
+            {`${NotifyType[notification.type]} ${notification.text}`}
+          </div>
+        );
+      })}
     </div>,
     document.body,
   );
 };
 
-// Глобальная функция для вызова уведомления
-/**
- * Отображает уведомление с текстом text.
- * @param {string} text - текст уведомления - success:  | default: "" | error:
- * @param {NotifyType} [type="default"] - тип уведомления
- * @param {number} [duration=3000] - продолжительность уведомления в миллисекундах
- * @param {special} [special=false] - специальное уведомление
- */
 export const getNotify = (
   text: string,
   type?: NotifyType,

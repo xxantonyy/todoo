@@ -28,7 +28,7 @@ const BaseAPI = (
       response = await actions.post<TServerResponseDataInput<TData>>(query.url, query.params, query.options);
       break;
     case EQueryTypes.DELETE:
-      response = await actions.del<TServerResponseDataInput<TData>>(query.url, query.params);
+      response = await actions.del<TServerResponseDataInput<TData>>(query.url, query.params, query.options);
       break;
     case EQueryTypes.PUT:
       response = await actions.put<TServerResponseDataInput<TData>>(query.url, query.params, query.options);
